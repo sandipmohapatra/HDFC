@@ -1,0 +1,44 @@
+https://github.com/sandipmohapatra/HDFC
+-----------------------------------------------------------
+MYSql 8.0
+https://dev.mysql.com/downloads/mysql/
+-------------------------------
+MongoDB
+https://www.mongodb.com/download-center/community/releases/archive/mongodb-windows-x86_64-7.0.0.zip
+------------------------------------
+Eclipse
+https://www.eclipse.org/downloads/
+-----------------------------------
+MySQL
+-------------------
+To view the list of databases
+1)show databases;
+--------------------------------------------
+To create database
+2)create database HDFC;
+-------------------------------------------------
+To use the database
+3)use HDFC
+---------------------------------------------------
+To create a table
+4)create table student(rollno int,name varchar(50),address varchar(60));
+-------------------------------------------------------------------------------------------------
+To view the table structure
+5)desc student; 
+--------------------------------------------------------------------
+To insert data into the table
+6)insert into student values(101,'sandip','Bangalore');
+-------------------------------------------------------------------------------
+To view the table
+7)select * from student;
+---------------------------------------------------------------------
+To update the data
+8) update student set address='Hydrabad' where rollno=102;
+----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
