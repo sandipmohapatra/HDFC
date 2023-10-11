@@ -70,9 +70,15 @@ create table student5 as select address,name from student;
 15)To delete all rows from a table;
 truncate table student;
 delete from student;
+*In this the structure will be present;
 ----------------------------------------------------------------------------------------
 16)To display the unique values
 select distinct name from student3;
 -------------------------------------------------------------------------------------------
+To delete a table;
+17)drop table student;
+In this the table structure will be deleted.
+-------------------------------------------------------------------------------------------------------------
+
 
 
