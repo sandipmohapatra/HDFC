@@ -31,6 +31,7 @@ To insert data into the table
 -------------------------------------------------------------------------------
 To view the table
 7)select * from student;
+select rollno,name from student;
 ---------------------------------------------------------------------
 To update the data
 8) update student set address='Hydrabad' where rollno=102;
