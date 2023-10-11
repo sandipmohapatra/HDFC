@@ -79,6 +79,8 @@ To delete a table;
 17)drop table student;
 In this the table structure will be deleted.
 -------------------------------------------------------------------------------------------------------------
-
-
+Order by clause;
+18)select * from student order by name desc;
+select * from student order by name asc;
+---------------------------------------------------------------------------------------------------------------
 
