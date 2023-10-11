@@ -71,6 +71,8 @@ create table student5 as select address,name from student;
 truncate table student;
 delete from student;
 ----------------------------------------------------------------------------------------
-
+16)To display the unique values
+select distinct name from student3;
+-------------------------------------------------------------------------------------------
 
 
