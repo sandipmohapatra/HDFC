@@ -46,11 +46,20 @@ To insert the data into the new column
 10)update student set phy=67,chem=77,bio=83 where rollno=101;
 update student set phy=65,chem=75,bio=73 where rollno=102;
 update student set phy=62,chem=72,bio=72 where rollno=103;
- update student set tot=phy+chem+bio;
- update student set avg=tot/3;
+update student set tot=phy+chem+bio;
+update student set avg=tot/3;
 ---------------------------------------------------------------------
-
-
+To delete a row
+11)delete from student where rollno=103;
+----------------------------------------------------------------------------------
+to delete a column
+12)alter table student drop column phy;
+alter table student drop column tot;
+---------------------------------------------------------------------------------------
+to insert multiple rows
+13)insert into student(rollno,name,address)  values(103,'sunil','Pune'),
+ (104,'Madhu','Hydrabad'),(105,'sumeet','Delhi');
+------------------------------------------------------------------------------------------------------------
 
 
 
