@@ -60,6 +60,17 @@ to insert multiple rows
 13)insert into student(rollno,name,address)  values(103,'sunil','Pune'),
  (104,'Madhu','Hydrabad'),(105,'sumeet','Delhi');
 ------------------------------------------------------------------------------------------------------------
+14)To create a clone table
+create table student1 as select * from student;
+ create table student2 as select * from student order by name desc;
+create table student3 as select * from student order by name asc;
+create table student4 as select address,name,rollno from student;
+create table student5 as select address,name from student;
+-------------------------------------------------------------------------------------------------
+15)To delete all rows from a table;
+truncate table student;
+delete from student;
+----------------------------------------------------------------------------------------
 
 
 
