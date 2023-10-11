@@ -1,0 +1,11 @@
+https://github.com/sandipmohapatra/HDFC
+-----------------------------------------------------------
+MYSql 8.0
+https://dev.mysql.com/downloads/mysql/
+-------------------------------
+MongoDB
+https://www.mongodb.com/download-center/community/releases/archive/mongodb-windows-x86_64-7.0.0.zip
+------------------------------------
+Eclipse
+https://www.eclipse.org/downloads/
+-----------------------------------
