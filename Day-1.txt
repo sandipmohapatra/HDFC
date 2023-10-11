@@ -35,8 +35,20 @@ To view the table
 To update the data
 8) update student set address='Hydrabad' where rollno=102;
 ----------------------------------------------------------------------------------------
-
-
+To add column
+9)alter table student add phy int;
+alter table student add chem int;
+alter table student add bio int;
+alter table student add tot int;
+alter table student add avg int;
+-----------------------------------------------------------------------
+To insert the data into the new column
+10)update student set phy=67,chem=77,bio=83 where rollno=101;
+update student set phy=65,chem=75,bio=73 where rollno=102;
+update student set phy=62,chem=72,bio=72 where rollno=103;
+ update student set tot=phy+chem+bio;
+ update student set avg=tot/3;
+---------------------------------------------------------------------
 
 
 
