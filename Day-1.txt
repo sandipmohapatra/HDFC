@@ -144,8 +144,7 @@ int empno=ob.nextInt();
 String name=ob.next();
 String address=ob.next();
 int salary=ob.nextInt();
-PreparedStatement st=con.prepareStatement("insert into hdfcemp values"
-		+ "(?,?,?,? )");
+PreparedStatement st=con.prepareStatement("insert into hdfcemp values(?,?,?,? )");
 st.setInt(1,empno);
 st.setString(2,name);
 st.setString(3,address);
@@ -155,7 +154,33 @@ System.out.println("row inseretd");
 }
 }
 ------------------------------------------------------------------------------
-
+update
+------------
+import java.util.*;
+import java.sql.*;
+public class First
+{
+public static void main(String[] args) throws Exception
+{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con=DriverManager.getConnection
+("jdbc:mysql://localhost:3306/hdfc","root","1234");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter name,address,salary and empno which you want to modify");
+String name=ob.next();
+String address=ob.next();
+int salary=ob.nextInt();
+int empno=ob.nextInt();
+PreparedStatement st=con.prepareStatement("update hdfcemp set name=?,"
+		+ "address=?,salary=? where empno=?");
+st.setString(1,name);
+st.setString(2,address);
+st.setInt(3, salary);
+st.setInt(4,empno);
+st.execute();
+System.out.println("row updated");
+}}
+---------------------------------------------------------------------------------------------------
 
 
 
