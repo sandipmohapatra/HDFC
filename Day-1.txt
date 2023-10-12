@@ -171,8 +171,7 @@ String name=ob.next();
 String address=ob.next();
 int salary=ob.nextInt();
 int empno=ob.nextInt();
-PreparedStatement st=con.prepareStatement("update hdfcemp set name=?,"
-		+ "address=?,salary=? where empno=?");
+PreparedStatement st=con.prepareStatement("update hdfcemp set name=?,address=?,salary=? where empno=?");
 st.setString(1,name);
 st.setString(2,address);
 st.setInt(3, salary);
@@ -181,9 +180,47 @@ st.execute();
 System.out.println("row updated");
 }}
 ---------------------------------------------------------------------------------------------------
+import java.util.*;
+import java.sql.*;
+public class First
+{
+public static void main(String[] args) throws Exception
+{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con=DriverManager.getConnection
+("jdbc:mysql://localhost:3306/hdfc","root","1234");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter empno which you want to delete");
+int empno=ob.nextInt();
+PreparedStatement st=con.prepareStatement("delete from hdfcemp where empno=?");
+st.setInt(1,empno);
+st.execute();
+System.out.println("row deleted");
+}}
 
+----------------------------------------------
+import java.util.*;
+import java.sql.*;
+public class First
+{
+	public static void main(String[] args) throws Exception
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection
+				("jdbc:mysql://localhost:3306/hdfc","root","1234");
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter empno which you want to delete");
+		int empno=ob.nextInt();
+		PreparedStatement st=con.prepareStatement("delete from hdfcemp where empno=?");
+		st.setInt(1,empno);
+		int x=st.executeUpdate(); //return 0 or 1
+		if(x==1)
+			System.out.println("row deleted");
+		else
+			System.out.println("row not deleted");
 
-
+	}}
+----------------------------------------------------------------------------
 
 
 
