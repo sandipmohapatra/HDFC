@@ -102,6 +102,36 @@ create table employee1 (empno int not null auto_increment,name varchar(30) not n
 ---------------------------------------------------------------------------------
 create table employee2 (empno int not null auto_increment,name varchar(30) not null,address varchar(30) not null ,salary int not null,primary key(empno,name,address));
 -------------------------------------------------------------------------------------------
+JDBC :- java database connectivity
+In this we can connect java program with database
+we have to follow 4 steps
+--------------------------------------
+1)load the driver (oracle driver,mysql driver,mongodb driver)
+2)create a connection by providing url,username,password
+3)statement or querry
+4)execute command
+-----------------------------------------------------------------------------
+import java.util.*;
+import java.sql.*;
+public class First
+{
+public static void main(String[] args) throws Exception
+{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con=DriverManager.getConnection
+("jdbc:mysql://localhost:3306/hdfc","root","1234");
+Statement st=con.createStatement();
+//st.execute("create table hdfcemp(empno int,name varchar(30),"
+//		+ "address varchar(30),salary int)");
+//st.execute("insert into hdfcemp values(101,'sandip','bangalore',89000)");
+//st.execute("update hdfcemp set name='sunil' where empno=101");
+st.execute("delete from hdfcemp where empno=101");
+System.out.println("row deleted");
+}}
+--------------------------------------------------------------------------------
+
+
+
 
 
 
