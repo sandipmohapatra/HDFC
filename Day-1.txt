@@ -221,6 +221,19 @@ public class First
 
 	}}
 ----------------------------------------------------------------------------
+wap to program to create a bank class (accno,name,phoneno,balance)
+customer will either withdraw or deposite .Display the final details of the customer who's accno is entered.
+minimum balance should be 1000.
+--------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 
 
