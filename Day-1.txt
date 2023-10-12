@@ -84,4 +84,34 @@ Order by clause;
 18)select * from student order by name desc;
 select * from student order by name asc;
 ---------------------------------------------------------------------------------------------------------------
+INSERT INTO new_employees (employee_id, first_name, last_name, salary)
+SELECT employee_id, first_name, last_name, salary
+FROM employees;
+-----------------------------------------------------------------------------------------------------------------------
+constraints
+-----------------------
+1)primary key :- If we declare a column as primary key we cannot enter duplicate values and we cannot keep the column empty.
+2)not null:-It we declare the column as not null we cannot keep the column empty.
+3)auto_increment:- if we declare a column as auto increment we neednot enter any value .It will automatically increment.
+--------------------------------------------------------
+create table employee (empno int not null auto_increment,name varchar(30) not null,address varchar(30) not null,primary key(empno));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
