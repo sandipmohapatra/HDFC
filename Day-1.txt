@@ -95,8 +95,13 @@ constraints
 3)auto_increment:- if we declare a column as auto increment we neednot enter any value .It will automatically increment.
 --------------------------------------------------------
 create table employee (empno int not null auto_increment,name varchar(30) not null,address varchar(30) not null,primary key(empno));
-
-
+--------------------------------------------------------------
+composite key
+----------------------------
+create table employee1 (empno int not null auto_increment,name varchar(30) not null,address varchar(30) not null ,salary int not null,primary key(empno,name));
+---------------------------------------------------------------------------------
+create table employee2 (empno int not null auto_increment,name varchar(30) not null,address varchar(30) not null ,salary int not null,primary key(empno,name,address));
+-------------------------------------------------------------------------------------------
 
 
 
