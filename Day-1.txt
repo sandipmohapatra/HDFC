@@ -129,6 +129,32 @@ st.execute("delete from hdfcemp where empno=101");
 System.out.println("row deleted");
 }}
 --------------------------------------------------------------------------------
+import java.util.*;
+import java.sql.*;
+public class First
+{
+public static void main(String[] args) throws Exception
+{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con=DriverManager.getConnection
+("jdbc:mysql://localhost:3306/hdfc","root","1234");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter empno,name,address,salary");
+int empno=ob.nextInt();
+String name=ob.next();
+String address=ob.next();
+int salary=ob.nextInt();
+PreparedStatement st=con.prepareStatement("insert into hdfcemp values"
+		+ "(?,?,?,? )");
+st.setInt(1,empno);
+st.setString(2,name);
+st.setString(3,address);
+st.setInt(4, salary);
+st.execute();
+System.out.println("row inseretd");
+}
+}
+------------------------------------------------------------------------------
 
 
 
