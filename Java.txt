@@ -9,3 +9,66 @@ https://www.mongodb.com/download-center/community/releases/archive/mongodb-windo
 Eclipse
 https://www.eclipse.org/downloads/
 -----------------------------------
+example-1
+-----------------
+public class Second 
+{
+int empno;
+String name,address;
+double salary;
+public int getEmpno() {
+	return empno;
+}
+public void setEmpno(int empno) {
+	this.empno = empno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public double getSalary() {
+	return salary;
+}
+public void setSalary(double salary) {
+	this.salary = salary;
+}
+public Second(int empno, String name, String address, double salary) {
+	super();
+	this.empno = empno;
+	this.name = name;
+	this.address = address;
+	this.salary = salary;
+}
+//it displays the string format of the object .
+@Override
+public String toString() {
+	return "Second [empno=" + empno + ", name=" + name + ", address=" + address + ", salary=" + salary + "]";
+}
+}
+----------------------------------------------------------------------------------------
+public class Third 
+{
+public static void main(String[] args)
+{
+Second ob1=new Second(101,"sandip","Bangalore",75000.50);
+Second ob2=new Second(102,"kiran","Bangalore",65000.50);
+Second ob3=new Second(103,"sunil","Bangalore",55000.50);
+System.out.println(ob1);
+System.out.println(ob2);
+System.out.println(ob3);
+ob1.setEmpno(101);
+ob1.setName("peter");
+ob1.setAddress("Bangalore");
+ob1.setSalary(45000.00);
+System.out.println(ob1.getEmpno()+" "+ob1.getName()+"  "+ob1.getAddress()+"  "+ob1.getSalary());
+}
+}
+------------------------------------------------------------------------------------
