@@ -55,6 +55,7 @@ public String toString() {
 }
 ----------------------------------------------------------------------------------------
 without using arraylist
+------------------------------------------------------
 public class Third 
 {
 public static void main(String[] args)
@@ -73,7 +74,7 @@ System.out.println(ob1.getEmpno()+" "+ob1.getName()+"  "+ob1.getAddress()+"  "+o
 }
 }
 ------------------------------------------------------------------------------------
-with using arraylist
+with using arraylist :- ArrayList is a class which stores object.
 --------------------------------------
 import java.util.*;
 public class Third 
