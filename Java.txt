@@ -54,6 +54,7 @@ public String toString() {
 }
 }
 ----------------------------------------------------------------------------------------
+without using arraylist
 public class Third 
 {
 public static void main(String[] args)
@@ -72,3 +73,28 @@ System.out.println(ob1.getEmpno()+" "+ob1.getName()+"  "+ob1.getAddress()+"  "+o
 }
 }
 ------------------------------------------------------------------------------------
+with using arraylist
+--------------------------------------
+import java.util.*;
+public class Third 
+{
+public static void main(String[] args)
+{
+Second ob1=new Second(101,"sandip","Bangalore",75000.50);
+Second ob2=new Second(102,"kiran","Bangalore",65000.50);
+Second ob3=new Second(103,"sunil","Bangalore",55000.50);
+ArrayList<Second> al=new ArrayList<Second>();
+al.add(ob1);
+al.add(ob2);
+al.add(ob3);
+System.out.println(al);
+for(Second x:al)
+	System.out.println(x);
+ob1.setEmpno(101);
+ob1.setName("peter");
+ob1.setAddress("Bangalore");
+ob1.setSalary(45000.00);
+System.out.println(ob1.getEmpno()+" "+ob1.getName()+"  "+ob1.getAddress()+"  "+ob1.getSalary());
+}
+}
+----------------------------------------------------------------------------
