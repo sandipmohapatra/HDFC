@@ -99,3 +99,128 @@ System.out.println(ob1.getEmpno()+" "+ob1.getName()+"  "+ob1.getAddress()+"  "+o
 }
 }
 ----------------------------------------------------------------------------
+Inheritance (parent class,child class)it is also known as (is-a) relationship.
+In this we reuse the exsisting code.
+It is tight couple.
+-------------------------------------------------------------------------------------
+Aggregation (has-a) relationship
+example :- house has a kitchen
+employee has a designation.
+In this the whole class is called within another class.
+---------------------------------------------------------------------------------------
+aggregation
+------------------------------
+public class Second 
+{
+int empno;
+String name,address;
+double salary;
+Designation design;
+public int getEmpno() {
+	return empno;
+}
+public void setEmpno(int empno) {
+	this.empno = empno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public double getSalary() {
+	return salary;
+}
+public void setSalary(double salary) {
+	this.salary = salary;
+}
+public Designation getDesign() {
+	return design;
+}
+public void setDesign(Designation design) {
+	this.design = design;
+}
+public Second(int empno, String name, String address, double salary, Designation design) {
+	super();
+	this.empno = empno;
+	this.name = name;
+	this.address = address;
+	this.salary = salary;
+	this.design = design;
+}
+@Override
+public String toString() {
+	return "Second [empno=" + empno + ", name=" + name + ", address=" + address + ", salary=" + salary + ", design="
+			+ design + "]";
+}
+}
+-------------------------------------------------------------------------------------
+
+public class Designation {
+int salary;
+String design;
+double tax;
+public int getSalary() {
+	return salary;
+}
+public void setSalary(int salary) {
+	this.salary = salary;
+}
+public String getDesign() {
+	return design;
+}
+public void setDesign(String design) {
+	this.design = design;
+}
+public double getTax() {
+	return tax;
+}
+public void setTax(double tax) {
+	this.tax = tax;
+}
+public Designation(int salary, String design, double tax) {
+	super();
+	this.salary = salary;
+	this.design = design;
+	this.tax = tax;
+}
+@Override
+public String toString() {
+	return "Designation [salary=" + salary + ", design=" + design + ", tax=" + tax + "]";
+}}
+--------------------------------------------------------------------------------------------
+import java.util.*;
+public class Third 
+{
+public static void main(String[] args)
+{
+	Designation d1=new Designation(56000,"Developer",2500);
+	Designation d2=new Designation(86000,"Manager",2500);
+	Designation d3=new Designation(46000,"Sales",2500);
+	
+Second ob1=new Second(101,"sandip","Bangalore",75000.50,d1);
+Second ob2=new Second(102,"kiran","Bangalore",65000.50,d2);
+Second ob3=new Second(103,"sunil","Bangalore",55000.50,d3);
+ArrayList<Second> al=new ArrayList<Second>();
+al.add(ob1);
+al.add(ob2);
+al.add(ob3);
+System.out.println(al);
+for(Second x:al)
+	System.out.println(x);
+ob1.setEmpno(101);
+ob1.setName("peter");
+ob1.setAddress("Bangalore");
+ob1.setSalary(45000.00);
+System.out.println(ob1.getEmpno()+" "+ob1.getName()+"  "+ob1.getAddress()+"  "+ob1.getSalary());
+}
+}
+-------------------------------------------------------------------------------------------
+
+
