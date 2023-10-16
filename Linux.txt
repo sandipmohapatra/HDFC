@@ -1,0 +1,40 @@
+Feature of Linux
+---------------------------
+Open Source: Linux is distributed open source which means that its source code is freely available for anyone to view, modify, and distribute. 
+
+Multitasking: Linux supports multitasking, allowing multiple processes to run concurrently on a single system. 
+
+Multiuser: Linux is a multiuser operating system, meaning that multiple users can have separate accounts on the same system, with their own files, settings, and privileges.
+
+Security: Linux is known for its robust security features, including user-level permissions, file system security, and support for various encryption and authentication mechanisms. 
+
+Stability: Linux is renowned for its stability and reliability. 
+
+Portability: Linux can be ported to different hardware architectures, which makes it versatile and adaptable to a wide range of devices, from servers to embedded systems.
+
+Networking: Linux has excellent networking capabilities, making it well-suited for network servers and communication equipment. It supports various networking protocols and services, including TCP/IP, DNS, DHCP, and more.
+
+Scalability: Linux can be used on a variety of hardware configurations, from small embedded devices to large supercomputers. This scalability allows it to meet the needs of diverse applications.
+
+Command-Line Interface (CLI): Linux provides a powerful and customizable command-line interface (CLI) that allows users to interact with the system efficiently. 
+
+Package Management: Most Linux distributions come with package management systems (e.g., APT, YUM, DNF) that simplify software installation, updates, and removal. This ensures easy software management and dependency resolution.
+
+Wide Software Ecosystem: Linux offers a vast selection of software applications, tools, and libraries, both open-source and commercial. Popular desktop environments (e.g., GNOME, KDE) and office suites (e.g., LibreOffice) are available.
+
+Community Support: Linux benefits from a vibrant and supportive community of users and developers who contribute to its development, provide documentation, and offer assistance through forums, mailing lists, and other channels.
+
+Virtualization and Containerization: Linux supports various virtualization technologies (e.g., KVM, VirtualBox) and containerization platforms (e.g., Docker) for efficient resource utilization and application deployment.
+
+Compatibility: Linux supports a wide range of file systems, including ext4, Btrfs, XFS, and more, making it compatible with various storage solutions.
+
+Customization: Linux allows for extensive customization of the system, enabling users to tailor their environments to their specific needs and preferences.
+
+These features, combined with the flexibility and cost-effectiveness of Linux, make it a popular choice for a wide range of applications, from servers and supercomputers to desktops, smartphones, and embedded systems.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ls -l :- This is used to list the files and directories .
+clear:- To clear the screen
+mkdir:- To make directory
+cd :- To change directory
+
+
