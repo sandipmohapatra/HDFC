@@ -79,6 +79,11 @@ sort <filename>
 19)gzip command is used to compress the file size.
 the extention of the file will be converted to 
 a1.txt.gz
-20)
+20)find command is used to find a particular file within a directory.
+it support various options to find a file such as byname,by type,by date,
+(.) ->indicates current working directory.
+(/) ->root 
+find . -name "*.txt"
+21) 
 
 
