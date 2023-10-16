@@ -51,6 +51,23 @@ cp test1.txt test2.txt
 mv <filename> <folder name>
 mv test1.txt sandip(one file will be moved into the sandip folder) 
 mv *.txt sandip (at a time all the files will be moved to sandip folder)
-
+11)to view the first 10 lines of a file content
+head <filename>
+12)to view the last 10 lines of the file content
+tail <filename>
+13)cat will show the file in the same order but tac will show the file in reverse order.
+14)cut command
+cat >test4.txt
+sandip-78
+kiran-55
+peter-66
+sunil-86
+john-83
+15)we can cut the text using delimiter
+The delimiter can be space(' '),slash(/),hyphen(-)
+cut -d- -f2 test4.txt
+cut -d- -f1 test4.txt
+-d is delimiter
+-f2 is the column number.
 
 
