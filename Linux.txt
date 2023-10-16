@@ -72,6 +72,13 @@ cut -d- -f1 test4.txt
 16)grep command is use to search the content
 cat test4.txt |grep 55
 cat test4.txt |grep sa
-17)
+17)wc is use to count lines,words and characters in a file
+wc <filename>
+18)sort command is uesd to sort files in alphabetical order.
+sort <filename>
+19)gzip command is used to compress the file size.
+the extention of the file will be converted to 
+a1.txt.gz
+20)
 
 
