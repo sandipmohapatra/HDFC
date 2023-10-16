@@ -84,6 +84,20 @@ it support various options to find a file such as byname,by type,by date,
 (.) ->indicates current working directory.
 (/) ->root 
 find . -name "*.txt"
-21) 
+21) date is use to display the current date and time of the system
+22)cal is display the current month calander.
+23)whoami :- it display the username.
+24)echo command is used to display the content.
+echo "welcome to linux"
+25)to install java software
+sudo apt update
+we need to provide the user password.
+Java will be installed .to view the java version
+java -version
+26)nano editior is a simple notepad type editor.
+it is used to write text.
+the ctrl+x to exit.
+-------------------------------------------------------------------------
+
 
 
