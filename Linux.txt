@@ -97,6 +97,7 @@ java -version
 26)nano editior is a simple notepad type editor.
 it is used to write text.
 the ctrl+x to exit.
+27)exit :- to close the terminal.
 -------------------------------------------------------------------------
 
 
