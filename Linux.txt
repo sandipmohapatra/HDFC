@@ -69,5 +69,9 @@ cut -d- -f2 test4.txt
 cut -d- -f1 test4.txt
 -d is delimiter
 -f2 is the column number.
+16)grep command is use to search the content
+cat test4.txt |grep 55
+cat test4.txt |grep sa
+17)
 
 
