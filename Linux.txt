@@ -32,9 +32,25 @@ Customization: Linux allows for extensive customization of the system, enabling 
 
 These features, combined with the flexibility and cost-effectiveness of Linux, make it a popular choice for a wide range of applications, from servers and supercomputers to desktops, smartphones, and embedded systems.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-ls -l :- This is used to list the files and directories .
-clear:- To clear the screen
-mkdir:- To make directory
-cd :- To change directory
+Linux Commands
+----------------------------------------------------------------------------------
+1)ls -l :- This is used to list the files and directories .
+2)clear:- To clear the screen
+3)mkdir:- To make directory
+4)cd :- To change directory
+5)pwd :- present working directory
+6)touch test1.txt test2.txt test3.txt
+7)to write the content in it we have use
+cat > test1.txt
+This is a test1.
+ctrl+D 
+8)to copy the content of one file into another
+cp test1.txt test2.txt
+9)cd .. is use to come out of the folder.
+10)to move the files from one folder to another folder
+mv <filename> <folder name>
+mv test1.txt sandip(one file will be moved into the sandip folder) 
+mv *.txt sandip (at a time all the files will be moved to sandip folder)
+
 
 
