@@ -1,5 +1,3 @@
-http://localhost:8090/swagger-ui.html
----------------------------------------------------------
 Spring Boot is a project that is built on the top of the Spring Framework. It provides an easier and faster way to set up, configure, and run both simple and web-based applications.
 
 It is a Spring module that provides the RAD (Rapid Application Development) feature to the Spring Framework. It is used to create a stand-alone Spring-based application that you can just run because it needs minimal Spring configuration.
@@ -1494,7 +1492,101 @@ private EmployeeRepository repo;
 	}
 
 ---------------------------------------------------------------------------------------------------------------
+example-2
+-------------------
+package com.example.demo;
 
+import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringBootProject1Application {
+
+	public static void main(String[] args) {
+		ApplicationContext ac=SpringApplication.run(SpringBootProject1Application.class, args);
+		MyMessage mm=ac.getBean("ob1",MyMessage.class);
+		mm.welcome();
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter two numbers");
+		int a=ob.nextInt();
+		int b=ob.nextInt();
+		System.out.println("The sum of two nos are "+mm.sum(a, b));
+		Employee em=ac.getBean("emp",Employee.class);
+		em.input();
+		em.display();
+		Calculator cl=ac.getBean("cal",Calculator.class);
+		System.out.println("the square of a no is "+cl.square(3));
+		System.out.println("the multiply of 2 nos is "+cl.mul(5, 6));
+	}
+
+}
+----------------------------------------------------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.stereotype.Component;
+
+@Component("ob1")
+public class MyMessage 
+{
+public void welcome()
+{
+	System.out.println("welcome to spring boot");
+}
+public int sum(int a,int b)
+{
+	return a+b;
+}
+}
+----------------------------------------------------------------------------------------
+package com.example.demo;
+
+import java.util.Scanner;
+
+import org.springframework.stereotype.Component;
+
+@Component("emp")
+public class Employee
+{
+int empno;
+String name,address;
+double salary;
+void input()
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter empno,name,address and salary");
+	empno=ob.nextInt();
+	name=ob.next();
+	address=ob.next();
+	salary=ob.nextDouble();
+}
+void display()
+{
+	System.out.println("The empno is "+empno);
+	System.out.println("The empname is "+name);
+	System.out.println("The empaddress is "+address);
+	System.out.println("The empsalary is "+salary);
+	}
+}
+----------------------------------------------------------------------------------
+package com.example.demo;
+import org.springframework.stereotype.Component;
+
+@Component("cal")
+public class Calculator 
+{
+public int square(int a)
+{
+	return a*a;
+}
+public int mul(int a,int b)
+{
+	return a*b;
+}
+}
+----------------------------------------------------------------------------------------------------
 
 
 
