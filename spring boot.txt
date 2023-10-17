@@ -1678,6 +1678,100 @@ public void run(String... args) throws Exception {
 ---------------------------------------------------------------------------------------------------------
 https://forms.office.com/r/jb73hwrK1k
 --------------------------------------------------------
+example-3
+-------------------
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootProject2Application {
+
+	public static void main(String[] args) 
+	{
+		SpringApplication.run(SpringBootProject2Application.class, args);
+	}
+
+}
+------------------------------------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.Ordered;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+//create table hdfcemploy(empno int ,name varchar(30),
+//address varchar(30));
+@Component
+public class InsertDemo implements CommandLineRunner,Ordered
+{
+@Autowired  //has-a relationship
+private JdbcTemplate jt;
+	@Override
+	public int getOrder() {return 1;}
+
+	@Override
+	public void run(String... args) throws Exception {
+		String x="insert into hdfcemploy values(?,?,?)";
+		int count=jt.update(x,101,"sandip","Bangalore");
+		System.out.println("row inserted "+count);
+	}}
+-------------------------------------------------------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.Ordered;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+@Component
+public class UpdateDemo implements CommandLineRunner,Ordered
+{
+@Autowired  //has-a relationship
+private JdbcTemplate jt;
+	@Override
+	public int getOrder() {return 2;}
+
+	@Override
+	public void run(String... args) throws Exception {
+		String x="update hdfcemploy set name=?,address=? where empno=?";
+		int count=jt.update(x,"sandip kumar","Pune",101);
+		System.out.println("row updated "+count);
+	}}
+
+------------------------------------------------------------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.Ordered;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+@Component
+public class DeleteDemo implements CommandLineRunner,Ordered
+{
+@Autowired  //has-a relationship
+private JdbcTemplate jt;
+	@Override
+	public int getOrder() {return 3;}
+
+	@Override
+	public void run(String... args) throws Exception {
+		String x="delete from hdfcemploy where empno=?";
+		int count=jt.update(x,101);
+		System.out.println("row deleted "+count);
+	}}
+
+------------------------------------------------------------------------------------------------------
+server.port=8090
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/hdfc
+spring.datasource.username=root
+spring.datasource.password=1234
+----------------------------------------------------------------------------------------------
 
 
 
