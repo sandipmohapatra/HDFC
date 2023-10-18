@@ -70,3 +70,55 @@ catch(Exception ae)
 </body>
 </html>
 --------------------------------------------------------------------------------------------------------------------------------------------
+<%@page import="java.sql.*" %>
+<% String a=request.getParameter("t1");
+String b=request.getParameter("t2");
+String c=request.getParameter("t3");
+String but=request.getParameter("b1");
+out.println("The button pressed is "+but);
+%>
+
+<%
+try
+{
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con=DriverManager.getConnection
+("jdbc:mysql://localhost:3306/hdfc","root","1234");
+if(but.equals("insert"))
+{
+PreparedStatement st=con.prepareStatement
+("insert into hdbcemp values(?,?,?)");
+st.setString(1,a);
+st.setString(2,b);
+st.setString(3,c);
+st.execute();
+out.println("row inserted");
+}
+else if(but.equals("update"))
+{
+	PreparedStatement st=con.prepareStatement
+			("update hdbcemp set name=?,address=? where empno=?");
+			st.setString(1,b);
+			st.setString(2,c);
+			st.setString(3,a);
+			st.execute();
+			out.println("row updated");
+}
+else if(but.equals("delete"))
+{
+	PreparedStatement st=con.prepareStatement
+			("delete from hdbcemp where empno=?");
+			st.setString(1,b);
+			st.execute();
+			out.println("row deleted");
+}
+else
+{
+	
+}
+}
+catch(Exception ae)
+{}
+%>
+		
+----------------------------------------------------------------------------------------------------------------------
