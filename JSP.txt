@@ -1,0 +1,24 @@
+example1
+--------------------
+<html>
+<body bgcolor=cyan>
+<h1><center>Employee Registration page</center></h1><hr color=red>
+<form action=second.jsp>
+<table>
+<tr><td>Enter your empno<td><input type=text name=t1 size=20 required>
+<tr><td>Enter your name<td><input type=text name=t2 size=20 required>
+<tr><td>Enter your address<td><input type=text name=t3 size=20 required>
+<tr><td><td><input type=submit value=insert>
+</table>
+</form>
+</body>
+</html>
+--------------------------------------------------------
+<% String a=request.getParameter("t1");
+String b=request.getParameter("t2");
+String c=request.getParameter("t3");%>
+
+<%out.println("the empno is "+a);
+out.println("the emp name is "+b);
+out.println("the emp address is "+c);%>
+-------------------------------------------------------------------------
