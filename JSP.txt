@@ -48,6 +48,8 @@ out.println("row inserted");
 catch(Exception ae)
 {}
 %>
-		<!-- create table hdfcemp(empno varchar(30),
+		<!--step 1:- add the mysql connector to the lib folder 
+		step 2:- create the table
+		create table hdfcemp(empno varchar(30),
      name varchar(30),address varchar(30)); -->
 ------------------------------------------------------------------------------------------------
