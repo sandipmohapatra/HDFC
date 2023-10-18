@@ -53,3 +53,20 @@ catch(Exception ae)
 		create table hdfcemp(empno varchar(30),
      name varchar(30),address varchar(30)); -->
 ------------------------------------------------------------------------------------------------
+<html>
+<body bgcolor=cyan>
+<h1><center>Employee Registration page</center></h1><hr color=red>
+<form action=second.jsp>
+<table>
+<tr><td>Enter your empno<td><input type=text name=t1 size=20 required>
+<tr><td>Enter your name<td><input type=text name=t2 size=20 required>
+<tr><td>Enter your address<td><input type=text name=t3 size=20 required>
+<tr><td><td><input type=submit value=insert name=b1>
+<input type=submit value=update name=b1>
+<input type=submit value=delete name=b1>
+<input type=submit value=select name=b1>
+</table>
+</form>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------------------
