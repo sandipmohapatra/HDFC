@@ -1,0 +1,25 @@
+<script>
+function match()
+{
+var x=f1.t1.value;
+var y=f1.t2.value;
+if(x==y)
+{
+alert("password are same..");
+return true;
+}
+else
+{
+alert("password must be same..");
+return false;
+}
+}
+</script>
+
+<body>
+<form name=f1 onsubmit=match()>
+Passwod:<input type=password name=t1><br>
+Re-enter Passwod:<input type=password name=t2><br>
+<input type=submit>
+</form>
+</body>
