@@ -1,0 +1,46 @@
+<!-- innerHtml used for printing the id value-->
+<html>
+<script>
+</script>
+<body>
+Add:<span id="add1"></span>
+Sub:<span id="sub1"></span>
+Mul:<span id="mul1"></span>
+Div:<span id="div1"></span>
+<input type=submit value=add onclick=add1()>
+<input type=submit value=sub onclick=sub1()>
+<input type=submit value=mul onclick=mul1()>
+<input type=submit value=div onclick=div1()>
+</body>
+
+<script>
+
+function add1()
+{
+var a=prompt("enter a number");
+var b=prompt("enter a number");
+var c=parseInt(a)+parseInt(b);
+document.getElementById("add1").innerHTML=c;
+}
+function sub1()
+{
+var a=prompt("enter a number");
+var b=prompt("enter a number");
+var c=parseInt(a)-parseInt(b);
+document.getElementById("sub1").innerHTML=c;
+}
+function mul1()
+{
+var a=prompt("enter a number");
+var b=prompt("enter a number");
+var c=parseInt(a)*parseInt(b);
+document.getElementById("mul1").innerHTML=c;
+}
+function div1()
+{
+var a=prompt("enter a number");
+var b=prompt("enter a number");
+var c=parseInt(a)/parseInt(b);
+document.getElementById("div1").innerHTML=c;
+}
+</script>
