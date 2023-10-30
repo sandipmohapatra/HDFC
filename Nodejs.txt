@@ -189,6 +189,7 @@ PRIMARY KEY(studid,NAME)
 );
 ------------------------------End Of MySql-----------------------------------
 *npm install mysql
+mysql>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 -----------------------------------
 example-1
 --------------------------
