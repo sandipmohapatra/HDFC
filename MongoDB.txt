@@ -20,7 +20,7 @@ Table			collection
 database			database
 Tuple/row		document
 column			field
-table join			embedded document
+table join		embedded document
 PrimaryKey		default key_id provided by mongodb itself
 -------------------------------------------------------------------------------------------------------
 3)document :- it is a set of key-value pairs.
@@ -58,7 +58,7 @@ show dbs;
 2)to create database and switch database
 use mphasisstudents;
 -------------------------------------------------------
-3)to show number of tables
+3)to show no of tables
 show tables;
 show collections;
 ---------------------------------------------------------
