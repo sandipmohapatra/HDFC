@@ -1,0 +1,28 @@
+spring core
+spring jdbc
+spring MVC
+-----------------------
+springBoot core
+SpringBoot MVC
+SpringBoot JPA
+SpringBoot Security
+SpringBoot Mail
+SpringBoot Cloud
+----------------------------------------
+project
+React
+------------------
+component
+service
+-----------------------------------
+SpringBoot
+1)model/entity
+2)Repository :-JPA,crud,mongo
+i)save ii)saveAll iii)getElementById iv)DeleteElementById
+3)service interface
+4)service implement
+5)controller
+getMapping,postMapping,putMapping,deleteMapping
+ Service will be connected with controller
+-------------------------------------------------------------------
+
