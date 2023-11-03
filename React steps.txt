@@ -381,6 +381,7 @@ class App extends React.Component {
         displayMore: false ,
            };  
       console.log('Component To Display less or more', this);  
+
       this.toggleDisplayMore = this.toggleDisplayMore.bind(this);  
       }  
       toggleDisplayMore(){  
@@ -780,542 +781,99 @@ this.state.products.map((product)=>
 }
 }
 --------------------------------------------------------------------------------
-1. What is React ?
-A. It is a JavaScript library used to build UI.
-2. What is difference between React and Angular?
-A. React is a library.
-Angular is a framework.
-If your project is about build application with lot of server side frameworks and you want just 
-your UI be more effects then "React" is good.
-If your project is about building app with minimum use of frameworks in backend
-and maximum is expected to handle client side then better "Angular".
-Netflix, Amazon, FaceBook, Instagram => React
-OS Window Mobile - Angular, PWA
-3. Is there any difference between React and React JS?
-A. No Difference
-4. Is there any difference between Angular and Angular JS?
-A. Yes
-5. Why we need Angular or React like library and framework to build UI as we already have 
-jQuery and JavaScript?
-6. What are the challenges in modern web development?
-- Unified UX
-- Fluid UX
-- Loosely coupled and extensible
-7. What is solution?
-A. Better build SPA [Single Page Applications] - Twitter
-8. How to build SPA? Can we use JS, JQ?
-A. Yes.
-- JS DOM
-- Logic, Coding funcitons
-- Ajax
-9. What is solution?
-A. React, Angular, Vue, Knockout, Ember, BackBone etc...
----------------------------------------------------------------------------------------------------
-Features of React
-1. It is component based.
-- It is faster in designing complex UI
-- It enables reusability
-- It is easy to extend
-- It is easy to test
-2. It uses Virtual DOM
-Browser Architecture
-- UI : It describes the browser interface, which includes
-title bar, shortcut buttons, addressbar, scroll bar.
-- Browser Engine : It translates your HTML.
-- Rendering Engine : It presents your markup in browser.
-- JavaScript Interpreter : It translated JavaScript - JIT [Just-in-Time]
-- Network : It tracks the performance of page
-- UI Backend : It defines the backend API's or extentions for browser.
-- Data Persistance : It includes storage for browser
-a) Local Storage
-b) Cookies
-c) Session Storage 
-d) Shared Storage
-- Various browser engines & rendering
-v8, chakra, edgeHTML, webkit, spider monkey, gecko etc..
-What is DOM?
-- It is a hierarchy of presenting elements.
-- It refers to Document Object Model.
-- It comprises of parent and child nodes.
-- Nodes are converted from Tokens
-- Tokens are from chars
-- Chars are from Bytes
-- Bytes are from markup.
-What is Shadow DOM?
-- It is a hierarchy of nodes in a component.
-What is Virutal DOM?
-- It is a duplicate copy of actual DOM.
-Features of React JS
-1. It is component based
-2. It uses Virtual DOM
-a) DOM
-b) Shadow DOM
-c) Virtual DOM
-3. It is faster.
-4. It is modular
-- It uses only the library that is required for application.
-- It is not legacy.
-- Application specific library
-- Application light weight
-- It uses less memory
-5. It uses built-in Async methods [Implicitly Asynchronous]
-6. You can easily plugin any 3rd party
-------------------------------------------------------------------------------------------------
-Issues with react
-1. React is not developed for what you are using.
-2. Lot of GAP's.
-3. Fill the GAP by using 3rd party library
-4. Lot of 3rd party libraries are required
-5. Pace of development and poor documentation.
----------------------------------------------------------------------------------------------------------------
-- You can use react library from CDN, react in HTML page requires 3 libraries
-a) react : It is the core library for React.
-b) react-dom : It is the library to handle virtual DOM
-c) babel : It is JavaScript compiler used by react.
-------------------------------------------------------------------------------------------------------
->npm install react --save
->npm install react-dom --save
->npm install @babel/standalone
->npm init -y
-> npm install react --save
-> npm install react-dom --save
-> npm install @babel/standalone --save
-> npm install bootstrap --save
-> npm install bootstrap-icons --save
-> npm install jquery --save
--------------------------------------------------------------------------
-Data Binding in React
-- It is the process of accessing data from source and binding to UI.
-- JavaScript and jQuery can handle data binding using DOM methods and jQuery functions.
-var username = "John";
-<p> </p>
-document.querySelector("p").innerHTML = username
-- React uses "Data Binding Expression" => { }
-var username = "John";
-<p> {username} </p>
-- React requires various techniques to bind data which is complex.
-a) Primitive Types
-number, string, boolean, null, undefined, symbol
-b) Non Primitive types
-array, object, map
-------------------------------------------------------------------
-Note: React supports only "One-Way-Binding". There no "Two-Way-Binding".
-------------------------------------------------------------------
-Data Binding in React
-- One Way Binding
-Binding Primitive Types : number, string, boolean, null, undefined..
-Binding Non Primitive Types : Array, Object, JSON
-Note: Don't use variables for storing data in component.
-Variables are immutable.
--------------------------------------------------------------------------------
-State in React
-- Web Applications use "http | https" as protocols.
-- Http is a state less protocol.
-- It can't remember information between requests.
-- State less nature of application is good for server, as it manages memory.
-- It is not good for contineous operations.
-- You can handle this issue by implementing various state management techniques
-a) Application State
-b) Session State
-c) Cookies
-d) QueryString etc..
-- React component can manage state for application
-- State was available in React upto 17 version only with Class Components.
-- React 18+ version introduced state for function components.
-- React function component can handle state by using a Hook [method] called 
-"useState()".
-- useState is not for class component, it is only for function component.
-- State is mutable.
-Syntax:
+Example-15
+------------------------------------
 import { useState } from "react";
-const [getter, setter] = useState(); => any type
-const [name] = useState("John"); => string
-const [products] = useState([]); => Array
-const [product] = useState({}); => Object
-----------------------------------------------------------------------------------------------
-React API
-- useState
-- useEffect
-- fetch()
-useEffect
-- It is a react hook that provides following phases
-a) Mount
-b) Unmount
+export function DataBinding()
+{
+const [userName] = useState("John");
+const [categories] = useState(["Electronics", "Footwear", "Fashion"]);
+const [products] = useState([{Name:"TV", Price:45000.33}, {Name:"Nike Casuals", Price:3200.44}]);
+return(
+<div className="container-fluid">
+<h2>State in React Function Component</h2>
+<p>Hello ! {userName}</p>
+<h2>Categories</h2>
+<ol>
+{
+categories.map((category)=>
+<li key={category}> {category} </li>
+)
+}
+</ol>
+<h2>Products Table</h2>
+<table className="table table-hover">
+<thead>
+<tr>
+<th>Name</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+{
+products.map((product)=>
+<tr key={product.Name}>
+<td>{product.Name}</td>
+<td>{product.Price}</td>
+</tr>
+)
+}
+</tbody>
+</table>
+</div>
+)
+}
+
+export default  DataBinding;
+---------------------------------------------------------------------------
+import { useEffect, useState } from "react";
+export function NasaComponent()
+{
+const [mars, setMars] = useState({photos:[]});
 useEffect(()=>{
-// actions on mount
-return() {
-//actions on unmount
-}
-}, [ dependencies ])
-------------------------------------------------------------------------------
-fetch()
-- It is a promise of JavaScript.
-- It is used to handle communication with API.
-Syntax:
-fetch("url")
-.then(function(response){
-return response.json();
+fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY&quot")
+.then(response=> response.json())
+.then(data=> {
+setMars(data);
 })
-.then(function(data){
-....present data..
-})
-.catch(function(ex){
-...exception...
-})
-------------------------------------------------------------------------------------------
-import { useState, useEffect } from "react";
-import "./fakestore.component.css";
-export function FakestoreComponent()
+},[])
+return(
+<div className="container-fluid">
+<h2>Mars Rover Photos </h2>
+<table className="table table-hover">
+<thead>
+<tr>
+<th>Photo Id</th>
+<th>Preview</th>
+<th>Camera Name</th>
+<th>Rover Name</th>
+</tr>
+</thead>
+<tbody>
 {
-const [categories, setCategories] = useState([]);
-const [products, setProducts] = useState([]);
-const [cartItems, setCartItems] = useState([]);
-const [cartCount, setCartCount] = useState(0);
-function GetCartCount(){
-setCartCount(cartItems.length);
+mars.photos.map(item=>
+<tr key={item.id}>
+<td>{item.id}</td>
+<td>
+<a href={item.img_src} target="_blank"><img width="200" 
+height="200" src={item.img_src} /></a>
+</td>
+<td>
+{item.camera.full_name}
+</td>
+<td>
+{item.rover.name}
+</td>
+</tr>
+)
 }
--------------------------------------------------------------------------------------------
-FAQ: What are the issues with Fetch promise?
-Ans :
-- It returns data in binary format.
-- You have to parse the data into JSON format.
-- Browser may block COM marshling [Common Object Model]
-[ object - to - binary & vice versa ]
-- CORS issues [Cross Origin Resource Sharing] 
-- Fetch promise is using JavaScript "catch()" which is poor in error handling.
-jQuery Ajax with React
-- jQuery provides Ajax methods.
-- They default return data in JSON
-- No conversions required.
-- Handle CORS issues
-- It reduces the browser compatibility issues.
-- It provides lot of Ajax life cycle methods, which can track the ajax process and 
-report the errors.
-ajaxStart()
-ajaxStop()
-ajaxSuccess()
-ajaxError()
-ajaxComplete()
-Syntax:
-$.ajax({
-method : "get | post | put | delete",
-url: "path",
-data: post data,
-success: () => { }
-error: () => { }
-})
-Ex:
-1. Install jQuery library for project
->npm install jquery --save
-2. Import jquery library into component
-import $ from "jquery";
-3. Implement Ajax
-$.ajax({ })
-fakestore.component.jsx
-import { useState, useEffect } from "react";
-import "./fakestore.component.css";
-import $ from "jquery";
-export function FakestoreComponent()
-{
-const [categories, setCategories] = useState([]);
-const [products, setProducts] = useState([]);
-const [cartItems, setCartItems] = useState([]);
-const [cartCount, setCartCount] = useState(0);
-function GetCartCount(){
-setCartCount(cartItems.length);
+</tbody>
+</table>
+</div>
+)
 }
----------------------------------------------------------------------------------------------------------------
-React Axios and Style Binding
-axios
-- It returns data in JSON
-- It good in error handling , more features than jQuery
-- It is more secured.
-a) Prevent CORS attacks
-b) Prevent XSS attacks
-c) Cross Page Posting etc..
-- It can handle multiple requests simultaneously at the same time.
-- It is async, without blocking current request it can process another request.
-- It is faster.
---------------------------------------------------------------------------
-Style and ClassBinding
-- React will not allow to bind inline styles exactly as you defined in DOM.
-- React uses virtual DOM and the actual DOM syntax is not allowed.
----------------------------------------------------------------
-Style Binding
-style={ {attributeName:value, attributeName:value} 
-----------------------------------------------------------------------------------------
-import { useState } from "react";
-export function StyleBinding(){
-const [styles, setStyles] = useState({'fontSize':'10px', 'color':'black'})
-
-function handleFontSizeChange(e){
-setStyles({
-fontSize: e.target.value + "px",
-color: styles.color})
-}
-
--------------------------------------------------------------------------------
-Class Binding in React
-- You can define a CSS class dynamically to any element.
-import { useState } from "react";
-export function ClassDemoComponent(){
-const [cities] = useState(["Delhi","Hyd","Mumbai","Chennai","Bangalore"]);
-const [buttonClass, setButtonClass] = useState('bi bi-sort-alpha-down');
---------------------------------------------------------------------------------------------------------
-What is Event?
-A. Event is a message sent by sender to its subscriber in order to notify change.
-2. Which software design pattern Event uses?
-A. Event follows a software design pattern called "Observer".
-3. What is the mechanism of event?
-A. Event uses "Delegate" mechanism, which is function pointer
-Various Types of Events
-1. Mouse Events
-onMouseover
-onMouseout
-onMousedown
-onMouseup
-onMousemove
-2. Keyboard Events
-onKeyup
-onKeydown
-onKeypress
-3. Button Events
-onClick
-onDblClick
-onContextMenu
-4. Element State Events
-onChange
-onBlur
-onFocus
-onSelectstart
-5. Clipboard Events
-onCut
-onCopy
-onPaste
-6. FormEvents
-onSubmit
-onReset
-7. TouchEvents
-onTouchStart
-onTouchEnd
-onTouchMove
-8. Timer Events
-setInterval()
-clearInterval()
-setTimeout()
-clearTimeout()
-MouseEvents
-- onMouseOver
-- onMouseOut
-- onMouseUp
-- onMouseDown
-- onMouseMove
-Timer Events
-- Mouse Events
-- Keyboard Events
-- Element State Events
-Button Events
-onClick Single Click of left button
-onDoubleClick Double Click of left button (ondblclick)
-onContextMenu Right Click of mouse button
-Clipboard Events
-onCut
-onCopy
-onPaste
------------------------------------------------------------------------------------------------------------------
-In React, "state" refers to an object that holds data that can change over time and can affect the rendering of components. State is a fundamental concept in React and plays a crucial role in building dynamic and interactive user interfaces.
-
-Component-Specific Data: Each component in a React application can have its own state. State is used to store data that is specific to a particular component.
-
-Mutable: State is mutable, meaning you can change its value over time. However, it should not be directly modified; instead, you should use the setState method or functional updates to update the state.
-
-Reactive Updates: When the state of a component changes, React will automatically re-render the component to reflect the updated state. This makes it easy to create responsive and dynamic user interfaces.
-
-Initialization: State is typically initialized in the component's constructor or by using React hooks (e.g., useState hook in functional components).
-
-Here's an example of how state is used in a class-based React component:
-
-import React, { Component } from 'react';
-
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-  }
-
-  incrementCount() {
-    // To update the state, use this.setState()
-    this.setState({ count: this.state.count + 1 });
-  }
-
-  render() {
-    return (
-      <div>
-        <p>Count: {this.state.count}</p>
-        <button onClick={() => this.incrementCount()}>Increment</button>
-      </div>
-    );
-  }
-}
-
-export default Counter;
------------------------------------------------------------------------------------
-In this example, the count property is part of the component's state, and when the "Increment" button is clicked, it updates the state, causing a re-render of the component to display the updated count.
-
-With the introduction of React hooks in functional components, you can also manage state using the useState hook:
-
-
-import React, { useState } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  const incrementCount = () => {
-    // To update the state, use the setCount function
-    setCount(count + 1);
-  }
-
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={incrementCount}>Increment</button>
-    </div>
-  );
-}
-
-export default Counter;
----------------------------------------------------------------
-In this functional component, the useState hook is used to manage the count state variable, and the setCount function is used to update it when the "Increment" button is clicked.
---------------------------------------------------------------------------------------------------
-Props
---------------------------
-
-In React, "props" is a short form of "properties," and it refers to the mechanism for passing data from a parent component to a child component. Props are a way to make components reusable and to configure their behavior and appearance based on the data they receive.
-
-Immutable Data: Props are read-only, meaning that a child component cannot modify the props it receives from its parent. They are intended to be used for one-way data flow, from parent to child.
-
-Component Configuration: Props are commonly used to configure a child component. For example, you might pass data, event handlers, or even other components as props.
-
-Named Arguments: In React, props are passed as named arguments to a component function or constructor. You can access props inside a component using the this.props object in class-based components or as an argument in functional components.
-
-Here's an example of how props are used in React:
-
-// ParentComponent.js
-import React from 'react';
-import ChildComponent from './ChildComponent';
-
-function ParentComponent() {
-  const name = 'John Doe';
-  const age = 30;
-
-  return (
-    <div>
-      <h1>Parent Component</h1>
-      <ChildComponent name={name} age={age} />
-    </div>
-  );
-}
-
-export default ParentComponent;
-jsx
-Copy code
-// ChildComponent.js
-import React from 'react';
-
-function ChildComponent(props) {
-  return (
-    <div>
-      <h2>Child Component</h2>
-      <p>Name: {props.name}</p>
-      <p>Age: {props.age}</p>
-    </div>
-  );
-}
-
-export default ChildComponent;
-----------------------------------------------------------------
-In this example, the ParentComponent passes two props (name and age) to the ChildComponent. The ChildComponent receives these props and renders them within its own content.
-
-You can think of props as a way to configure and customize a component's behavior and appearance without having to modify the component itself. This makes React components highly reusable and composable.
--------------------------------------------------------------------------------------------------------------
-Component Properties
-- Components a building blocks for application.
-- Component comprises of presentation, styles and logic.
-- You can re-use any component.
-- A component can be customized according to requirements and can be re-used at various 
-locations.
-- Component can be modified or customized by using Properties.
-- Properities are a set of parameters which can modify a function.
-- In React function component the parameter is considered as properties, which is an object 
-type.
------------------------------------------------------------------------------------------------------
-React Class Components
-Polymorphism
-- Poly stands for Many
-- Morphos stands for Forms
-- Configuring an object for various functionalities is know as Polymorphism.
-- A object can handle various situations and change behaviour according to state and 
-situation.
-- Technically polymorphism allows a single base class object to use the memory of multiple derived classes.
-Ex:
-<script>
-class Employee
-{
-FirstName;
-LastName;
-Designation;
-Print(){
-document.write(`${this.FirstName} ${this.LastName} - ${this.Designation} <br>`);
-}
-}
-class Developer extends Employee
-{
-FirstName = "Raj";
-LastName = "Kumar";
-Designation = "Developer";
-Role = "Developer Role : Build , Debug, Test, Deploy";
-Print(){
-super.Print();
-document.write(this.Role);
-}
-}
-class Admin extends Employee
-{
-FirstName = "Kiran";
-LastName = "Rao";
-Designation = "Admin";
-Role = "Admin Role : Authorizations";
-Print(){
-super.Print();
-document.write(this.Role);
-}
-}
-class Manager extends Employee
-{
-FirstName = "Tom";
-LastName = "Hanks";
-Designation = "Manager";
-Role = "Manager Role : Approvals";
-Print(){
-super.Print();
-document.write(this.Role);
-}
-}
-var Employees = new Array(new Developer(), new Admin(), new Manager());
-var designation = prompt("Enter Designation");
-for(var employee of Employees){
-if(employee.Designation==designation){
-employee.Print();
-}
-}
-</script>
--------------------------------------------------------------------
-
-
-
-
+export default NasaComponent
+---------------------------------------------
 
 
 
