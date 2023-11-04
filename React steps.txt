@@ -20,7 +20,120 @@ automatically the
 5)package.json :- it conatins the library versions installed.
 6)main.js
 -----------------------------------------------------------------------------
+React Components
+- A component comprises of
+a) Presentation
+b) Styles
+c) Logic
+- Presentation is done by using HTML
+- Styles are defined by using CSS
+- Logic is defined by using JavaScript | JSX | TypeScript
+- It is a reusable design with functionality.
+- It provides customizable designs.
+- Components are building blocks for application.
+- React component can be
+a) A function
+b) A class
+--------------------------------------------------------------------------------------------------------
+Function Component vs Class Component
+Class Component
+- It is statefull component.
+- It have implicit state configured.
+- It is easy to extend.
+- It provides various mutable techniques which are easy for desinging a reusable template.
+- Properties and Methods
+- Accessors with will fine control over the properties in class.
+- It uses more memory.
+- It is slow in rendering.
+- It is complex in configurations.
+- It uses lot of dependencies.
+------------------------------------------------------------------------------------------------------------
+Function Components:
+- It is stateless component.
+- You have use state explicitly.
+- A function provides all immutable members, however you can use state for making it mutable.
+- Hard to extend
+- It is faster
+- It uses less memory
+- It is modular.
+- It provides various built-in hooks.
 
+------------------------------------------------------------------------------------------------------------------
+FAQ: What are Pure and Impure Components?
+Ans :
+Impure:
+- A component created by using "React.Component" is impure.
+- It will re-render entire content even when there is no change.
+- If a property or state changed then entire component will re-render.
+- It is heavy on application
+- It is slow in access.
+Pure:
+- A component created by using "React.PureComponent" is pure.
+- It will not re-render entire component if there is no change.
+- rendering content will happen only when change occured[state, property]
+- It is faster in access
+- It improves the performance
+- Pure component identifies the changes by using "ChangeDetection" techniques
+InitialValue == FinalValue => No Change Detected
+InitialValue !== FinalValue => Then Change Detected
+- Pure component implicitly verifies initial and final values in a phase called
+"ComponentWillUpdate()"
+"ComponentDidUpdate()"
+- They re-render content only when external state changes.
+-----------------------------------------------------------------------------------------------------------------
+FAQ: What are pure and impure functions?
+Ans: Impure function can modify the values outside function scope.
+Syntax: Impure Function
+var x = 0;
+function Addition(a, b)
+{
+x = a + b;
+}
+Addition(10, 20)
+console.log(x);
+------------------------------------------------------------------------------------------------
+Syntax: Pure Function
+function Addition(a,b)
+{
+return a + b;
+}
+var x = Addition(10,20);
+Ex:
+import React from "react";
+export class PureDemo extends React.PureComponent
+{
+constructor(){
+super();
+this.state = {
+products: ["TV", "Mobile", "Watch"]
+}
+}
+handleLoadClick(){
+alert("hi");
+this.setState({
+products: ["TV", "Mobile", "Watch", "Shoes"]
+})
+}
+componentDidUpdate(){
+console.log("Component Will Render on Update");
+}
+render(){
+return(
+<div>
+<h2>Pure Component <button 
+onClick={this.handleLoadClick.bind(this)}>Load</button> </h2>
+<ol>
+{
+this.state.products.map((product)=>
+<li key={product}>{product}</li>
+)
+}
+</ol>
+</div>
+)
+}
+}
+--------------------------------------------------------------------------------
 example-1
 -----------------------
 app.js
@@ -343,6 +456,7 @@ Changing the state:-
 We can change the component state by using the setState() method and passing a new state object as the argument. Now, create a new method toggleDisplayBio() in the above example and bind this keyword to the toggleDisplayBio() method otherwise we can't access this inside toggleDisplayBio() method.
 --------------------------------------------------
 example of state
+Example-9
 ------------------------------------------------
 import React, { Component } from 'react';
 
@@ -371,7 +485,7 @@ class Counter extends Component {
 
 export default Counter;
 -----------------------------------------------------------------------------------------------------------------------
-example-9
+example-10
 ---------------------
 import React, { Component } from 'react';  
 class App extends React.Component {  
@@ -561,7 +675,7 @@ export default class PostList extends React.Component {
 >npm install react-router-dom --save
 >npm install react-router-dom@v5 --save
 --------------------------------------------------------------------------------------------------------------------------------------------
-Example-14
+Example-13
 -----------------------
 routing:- It is navigating to different pages.
 ----------------------------------------------------------------
@@ -667,121 +781,10 @@ return(
 }
 export default App;
 -------------------------------------------------------------------------------------------------
-React Components
-- A component comprises of
-a) Presentation
-b) Styles
-c) Logic
-- Presentation is done by using HTML
-- Styles are defined by using CSS
-- Logic is defined by using JavaScript | JSX | TypeScript
-- It is a reusable design with functionality.
-- It provides customizable designs.
-- Components are building blocks for application.
-- React component can be
-a) A function
-b) A class
---------------------------------------------------------------------------------------------------------
-Function Component vs Class Component
-Class Component
-- It is statefull component.
-- It have implicit state configured.
-- It is easy to extend.
-- It provides various mutable techniques which are easy for desinging a reusable template.
-- Properties and Methods
-- Accessors with will fine control over the properties in class.
-- It uses more memory.
-- It is slow in rendering.
-- It is complex in configurations.
-- It uses lot of dependencies.
-------------------------------------------------------------------------------------------------------------
-Function Components:
-- It is stateless component.
-- You have use state explicitly.
-- A function provides all immutable members, however you can use state for making it mutable.
-- Hard to extend
-- It is faster
-- It uses less memory
-- It is modular.
-- It provides various built-in hooks.
-
-------------------------------------------------------------------------------------------------------------------
-FAQ: What are Pure and Impure Components?
-Ans :
-Impure:
-- A component created by using "React.Component" is impure.
-- It will re-render entire content even when there is no change.
-- If a property or state changed then entire component will re-render.
-- It is heavy on application
-- It is slow in access.
-Pure:
-- A component created by using "React.PureComponent" is pure.
-- It will not re-render entire component if there is no change.
-- rendering content will happen only when change occured[state, property]
-- It is faster in access
-- It improves the performance
-- Pure component identifies the changes by using "ChangeDetection" techniques
-InitialValue == FinalValue => No Change Detected
-InitialValue !== FinalValue => Then Change Detected
-- Pure component implicitly verifies initial and final values in a phase called
-"ComponentWillUpdate()"
-"ComponentDidUpdate()"
-- They re-render content only when external state changes.
------------------------------------------------------------------------------------------------------------------
-FAQ: What are pure and impure functions?
-Ans: Impure function can modify the values outside function scope.
-Syntax: Impure Function
-var x = 0;
-function Addition(a, b)
-{
-x = a + b;
-}
-Addition(10, 20)
-console.log(x);
-------------------------------------------------------------------------------------------------
-Syntax: Pure Function
-function Addition(a,b)
-{
-return a + b;
-}
-var x = Addition(10,20);
-Ex:
-import React from "react";
-export class PureDemo extends React.PureComponent
-{
-constructor(){
-super();
-this.state = {
-products: ["TV", "Mobile", "Watch"]
-}
-}
-handleLoadClick(){
-alert("hi");
-this.setState({
-products: ["TV", "Mobile", "Watch", "Shoes"]
-})
-}
-componentDidUpdate(){
-console.log("Component Will Render on Update");
-}
-render(){
-return(
-<div>
-<h2>Pure Component <button 
-onClick={this.handleLoadClick.bind(this)}>Load</button> </h2>
-<ol>
-{
-this.state.products.map((product)=>
-<li key={product}>{product}</li>
-)
-}
-</ol>
-</div>
-)
-}
-}
---------------------------------------------------------------------------------
-Example-15
+*class App2.js in index import App2.js in that class create the functional component.
+export default <function name>
+-----------------------------------------------------------------------------------------------------------------------
+Example-14
 ------------------------------------
 import { useState } from "react";
 export function DataBinding()
@@ -826,6 +829,8 @@ products.map((product)=>
 
 export default  DataBinding;
 ---------------------------------------------------------------------------
+Example-15
+---------------------------
 import { useEffect, useState } from "react";
 export function NasaComponent()
 {
@@ -874,6 +879,804 @@ height="200" src={item.img_src} /></a>
 }
 export default NasaComponent
 ---------------------------------------------
+Event Binding
+- Mouse Events
+- Touch Events
 
 
+                                    Keyboard Events
+--------------------------------------------------------------------------------------------------------------------
+onKeyUp            ]   good for handling the chars that you key-in
+onKeyDown       ]
+onKeyPress        ]   good for handling the code of character.
+
+                   
+Key Event Properties:
+
+keyCode
+charCode
+which
+shiftKey
+ctrlKey
+altKey
+--------------------------------------------------------------------------------------------------------------------
+example-16
+------------------------
+import { useState } from "react";
+import "./App.css";
+export function PasswordStrength() {
+const [warnPwordclass, setWarnPwordclass] = useState('');
+const [passwordStrength, setPasswordStrength] = useState('');
+const [pwordValue, setPwordValue] = useState('');
+const [border,setBorder]=useState('');
+function warnPasswordStrength(e) 
+{
+setPwordValue(e.target.value)
+if (pwordValue.length < 4 || pwordValue.length>15) 
+{
+setPasswordStrength('Poor Password');
+setWarnPwordclass('text-danger bi bi-emoji-frown-fill')
+setBorder('border border-danger p-4');
+}
+else if (pwordValue.length >= 4 && pwordValue.length <= 15 && ((pwordValue.search(/[A-Z]/) === -1) )) {
+setPasswordStrength('Weak Password atleast contain one capital letter');
+setWarnPwordclass('text-warning bi bi-emoji-frown-fill')
+setBorder('border border-warning p-4');
+}
+else {
+setPasswordStrength('Strong Password');
+setWarnPwordclass('text-success bi bi-emoji-smile-fill')
+setBorder('border border-success p-4');
+}
+}
+return (
+<div className="container-fluid">
+<div style={{ height: '100vh' }} className={`d-flex align-items-center justify-content-center`} >
+
+<dl className={border}>
+<h2 className="m-3 text-justify"> <i className="bi bi-person-fill"></i> User LogIn</h2>
+<dt className="m-2">User Name</dt>
+<dd> <input type="text" /></dd>
+<dt className="m-2">Password</dt>
+<dd><input type="password" onChange={warnPasswordStrength} /></dd>
+
+<dd><span className={warnPwordclass} ></span><span></span>{passwordStrength}</dd>
+</dl>
+</div>
+</div>
+)}
+
+export default PasswordStrength
+----------------------------------------------------------------------------------------------------------------------------------------
+example-17
+---------------------
+import { useState } from "react"
+
+export function KeyEventAssignmentComponent() {
+
+const [errorMsg, setErrorMsg] = useState('');
+const [errorClass, setErrorClass] = useState('')
+
+function verifyPassword(e) {
+console.log(e.target.value, e.target.value.length)
+if (e.target.value.length < 4) {
+setErrorMsg('Poor Password');
+setErrorClass('text-danger')
+} else {
+if (e.target.value.match(/[A-Z]/)) {
+setErrorMsg('Strong Password');
+setErrorClass('text-success')
+} else {
+setErrorMsg('Weak Password');
+setErrorClass('text-warning')
+}
+}
+}
+
+return (
+<div className="container-fluid">
+<h2>Password Strength</h2>
+<dd>
+<dt>Password</dt>
+<dd><input type="password" onKeyUp={verifyPassword} /></dd>
+<dd className={errorClass}>{errorMsg}</dd>
+</dd>
+</div>
+)
+}
+
+export default KeyEventAssignmentComponent
+-------------------------------------------------------------------------------------------------
+example-18
+-------------------------
+import { useState } from "react";
+
+export function KeyDemo()
+{
+    const [country, setCountry] = useState('');
+    const [tip, setTip] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [regExp, setRegExp] = useState(/ /);
+    const [mobileError, setMobileError] = useState('');
+
+    function handleCountryChange(e){
+        setCountry(e.target.value);
+        switch(e.target.value){
+            case "India":
+            setTip('+91 10 digits number');
+            setRegExp(/\+91\d{10}/);
+
+            break;
+            case "US":
+            setTip('+(1)(20)(460) 345 3210');
+            setRegExp(/\+\(1\)\(\d{2}\)\(\d{3}\)\s\d{3}\d{4}/);
+
+            break;
+            case "UK":
+            setTip('+(44)(230) 4670 3450');
+            setRegExp(/\+\(44\)\(\d{3}\)\s\d{4}\s\d{4}/);
+
+            break;
+        }
+    }
+
+    function handleMobileChange(e){
+        setMobile(e.target.value);
+    }
+
+    function handleSubmitClick(){
+        if(mobile.match(regExp)){
+            document.write("<h2>Verified Successfully..</h2>");
+        } else {
+            setMobileError(`Invalid Mobile - ${tip}`);
+        }
+    }
+   
+    return(
+        <div className="container-fluid">
+            <h3>Register User</h3>
+            <dl>
+               <dt>Your Country</dt>
+               <dd>
+                <select onChange={handleCountryChange}>
+                    <option>Select Country</option>
+                    <option>India</option>
+                    <option>US</option>
+                    <option>UK</option>
+                </select>
+               </dd>
+               <dt>Mobile</dt>
+               <dd>
+                <input type="text" onChange={handleMobileChange} placeholder={tip} />
+               </dd>
+               <dd className="text-danger">{mobileError}</dd>
+               <dd>
+                <button onClick={handleSubmitClick} className="btn btn-primary">Submit</button>
+               </dd>
+            </dl>
+        </div>
+    )
+}
+export default KeyDemo
+---------------------------------------------------------------------------------------
+example-19
+------------------------
+import { useState } from "react";
+
+export function KeyDemo()
+{
+    const [userName, setUsername] = useState('john');
+    const [tip, setTip] = useState('');
+
+    function ChangeCase(){
+        setUsername(userName.toUpperCase());
+        if(userName==""){
+            setTip('User Name Required');
+        } else {
+            setTip('');
+        }
+    }
+    function handleUserChange(e){
+        setUsername(e.target.value)
+    }
+    function ShowTip(){
+        setTip('Name in Block Letter Only');
+    }
+   
+    return(
+        <div className="container-fluid">
+            <h3>Register User</h3>
+            <dl>
+               <dt>User Name</dt>
+               <dd><input type="text" onFocus={ShowTip} onChange={handleUserChange} value={userName} onBlur={ChangeCase} placeholder="Name in block letters" /></dd>
+               <dd>{tip}</dd>
+            </dl>
+        </div>
+    )
+}
+export default KeyDemo
+-------------------------------------------------------------------
+example-20
+----------------------
+import { useState } from "react";
+
+export function KeyDemo()
+{
+    const [userName, setUsername] = useState('john');
+    const [tip, setTip] = useState('');
+
+    function ChangeCase(){
+        setUsername(userName.toUpperCase());
+        setTip('');
+    }
+    function handleUserChange(e){
+        setUsername(e.target.value)
+    }
+    function ShowTip(){
+        setTip('Name in Block Letter Only');
+    }
+   
+    return(
+        <div className="container-fluid">
+            <h3>Register User</h3>
+            <dl>
+               <dt>User Name</dt>
+               <dd><input type="text" onFocus={ShowTip} onChange={handleUserChange} value={userName} onBlur={ChangeCase} placeholder="Name in block letters" /></dd>
+               <dd>{tip}</dd>
+            </dl>
+        </div>
+    )
+}
+
+export default KeyDemo
+-------------------------------------------------------------------
+example-21
+----------------------
+import { useState } from "react";
+
+export function KeyDemo()
+{
+    const [users] = useState([{"UserName":"john"}, {"UserName":"john12"}, {"UserName":"david"}]);
+    const [userError, setUserError] = useState('');
+    const [errorClass, setErrorClass] = useState('');
+    const [passwordWarning, setPasswarning] = useState({'display':'none'});
+
+    function VerifyUserName(e){
+        for(var user of users){
+            if(user.UserName==e.target.value) {
+                setUserError('User Name Taken - Try Another');
+                setErrorClass('text-danger');
+                break;
+            } else {
+                setUserError('User Name Available');
+                setErrorClass('text-success');
+            }
+        }
+    }
+
+    function VerifyPassword(e){
+        console.log(`
+             Key Code : ${e.keyCode} \n
+             Char Code : ${e.charCode} \n
+             Which  : ${e.which}
+        `);
+        if(e.which>=65 && e.which<=90) {
+            setPasswarning({'display':'block'});
+        } else {
+            setPasswarning({'display':'none'});
+        }
+    }
+
+    return(
+        <div className="container-fluid">
+            <h3>Register User</h3>
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" onKeyUp={VerifyUserName} /></dd>
+                <dd className={errorClass}>{userError}</dd>
+                <dt>Password</dt>
+                <dd><input type="password" onKeyPress={VerifyPassword} /></dd>
+                <dd className="text-warning" style={passwordWarning}>
+                    <span className="bi bi-exclamation-triangle"></span> Warning : Caps ON
+                </dd>
+            </dl>
+        </div>
+    )
+}
+export default KeyDemo
+--------------------------------------------------
+example-22
+--------------------------------
+import React, { useState } from "react";
+
+const 
+
+UserNameAndPasswordValidation  = () => {
+  const [UserNames, SetUserNames] = useState([
+    { Username: "James" },
+    { Username: "Rock" },
+    { Username: "Robert" },
+    { Username: "Thomas" },
+    { Username: "Galga" },
+    { Username: "Angelina" },
+    { Username: "Rebecca" },
+    { Username: "Lara" },
+    { Username: "Sara" },
+    { Username: "Kiara" },
+    { Username: "Elizebeth" },
+  ]);
+  const [NewUserGivenName, SetNewUserGivenName] = useState("");
+  const [NewUserNameMesg, SetNewUserNameMesg] = useState("");
+  const [ErrorMessage, SetErrorMessage] = useState([
+    {PassStr : "Password length should be 4-16 Characters"},
+    { UpperC: "Password doesn't have any UpperCase Letter " },
+    { LowerC: "Password doesn't have any Lowercase Letter" },
+    { Numbers: "Password doesn't have any Number" },
+    { Symbols: "Password doesn't have any Special Characters like @ $ -" },
+    {AllOkPass: "Password Strength- Strong"}
+  ]);
+
+  const [Passwordstr, SetPasswordStr ]= useState({display:"",color:"red", fontSize : "100%"})
+  const [NumberPasswordStyle, SetNumberPasswordStyle ]= useState({display:"",color:"red", fontSize : "100%"})
+  const [UpperPasswordStyle, SetUpperPasswordStyle ]= useState({display:"",color:"red", fontSize : "100%"})
+  const [LowerPasswordStyle, SetLowerPasswordStyle ]= useState({display:"",color:"red", fontSize : "100%"})
+  const [SymbolPasswordStyle, SetSymbolPasswordStyle ]= useState({display:"",color:"red", fontSize : "100%"})
+  const [AllOkPassStyle, SetAllOkPassStyle ]= useState({display:"none",color:"green", fontSize : "100%"})
+
+  const SetNewUserUSERNameHandle = (event) => {
+    SetNewUserGivenName(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const NewUserGivenNameCheckHandle = () => {
+    for (var userName of UserNames) {
+      if (NewUserGivenName == userName.Username) {
+        SetNewUserNameMesg("UserName Already Taken");
+        break;
+      } else {
+        SetNewUserNameMesg("UserName Available");
+      }
+    }
+  };
+
+  const OnSubmitClickHandle = (event) => {
+    event.preventDefault();
+    SetUserNames((preval) => [...preval, { Username: NewUserGivenName }]);
+  };
+
+
+  const PasswordVerification = (event) =>{
+    console.log(event.target.value)
+    let Passwords = event.target.value;
+    let Upperregex = /[A-Z]/
+    let Lowerregex = /[a-z]/
+    let Numberregex = /[0-9]/
+    let Symbolregex = /[@\.\$\-_]/
+   
+    if(Passwords.length>=4 && Passwords.length<=16){}
+    if(Passwords.match(Upperregex)){
+      console.log("uppermatch")
+      SetNumberPasswordStyle({display:"none",color:"red", fontSize : "100%"})
+    }
+    else{
+      SetNumberPasswordStyle({display:"",color:"red", fontSize : "100%"})
+    }
+    if(Passwords.match(Lowerregex)){
+      console.log("lowerMatch");
+      SetUpperPasswordStyle({display:"none",color:"red", fontSize : "100%"})
+    }
+    else{
+      SetUpperPasswordStyle({display:"",color:"red", fontSize : "100%"})
+    }
+    if(Passwords.match(Numberregex)){
+      console.log("Numbermatch");
+      SetLowerPasswordStyle({display:"none",color:"red", fontSize : "100%"})
+    }
+    else{
+      SetLowerPasswordStyle({display:"",color:"red", fontSize : "100%"})
+    }
+    if(Passwords.match(Symbolregex)){
+      console.log("symbolMatch");
+      SetSymbolPasswordStyle({display:"none",color:"red", fontSize : "100%"})
+    }
+    else{
+      SetSymbolPasswordStyle({display:"",color:"red", fontSize : "100%"})
+    }
+    if(Passwords.match(Upperregex)&&Passwords.match(Lowerregex)&&Passwords.match(Numberregex)&&Passwords.match(Symbolregex)){
+      SetAllOkPassStyle({display:"",color:"green", fontSize : "100%"})
+    }
+  }
+
+  return (
+    <div className="container-fluid text-center">
+      <h1>forms</h1>
+      <form action="">
+        <label>Enter Name:</label>
+        <br />
+        <input type="text" name="" id="" />
+        <br />
+        <br />
+        <label>Enter UserName:</label>
+        <br />
+        <input
+          type="text"
+          name=""
+          id=""
+          onBlur={NewUserGivenNameCheckHandle}
+          value={NewUserGivenName}
+          onChange={SetNewUserUSERNameHandle}
+        />
+        <br />
+        <br />
+        <dt>{NewUserNameMesg}</dt>
+        <label>Enter Password:</label>
+        <br />
+        <input type="text" onChange={PasswordVerification} name="" id="" />
+        <dl className="col-md-4 mx-auto mt-4" >
+          <dt><li style={NumberPasswordStyle} className="p-1 ">{ErrorMessage[0].PassStr}</li></dt>
+          <dt><li style={NumberPasswordStyle} className="p-1 ">{ErrorMessage[1].UpperC}</li></dt>
+          <dt><li style={UpperPasswordStyle} className="p-1 ">{ErrorMessage[2].LowerC}</li></dt>
+          <dt><li style={LowerPasswordStyle} className="p-1 ">{ErrorMessage[3].Numbers}</li></dt>
+          <dt><li style={SymbolPasswordStyle} className="p-1 ">{ErrorMessage[4].Symbols}</li></dt>
+          <dt><li style={AllOkPassStyle} className="p-1 ">{ErrorMessage[5].AllOkPass}</li></dt>
+        </dl>
+        <br />
+        <button onClick={OnSubmitClickHandle}>Submit </button>
+      </form>
+    </div>
+  );
+};
+
+export default UserNameAndPasswordValidation;
+----------------------------------------------------------------------------------------
+*image put inside public folder
+---------------------------------------------------------
+example-23
+----------------------
+import React, { useState } from "react";
+
+export function ButtonDemo()
+{
+    function OpenWindow(){
+        window.open("m1.jpeg","House","width=400 height=400");
+    }
+    return(
+        <div className="container-fluid">
+            <h2>Double Click</h2>
+            <img onDoubleClick={OpenWindow} src="m1.jpeg"  width="100" height="100"/>
+        </div>
+    )
+}
+
+export default ButtonDemo;
+-------------------------------------------------------------------------------------------------------------------
+example-24
+------------------------
+import React, { useState } from "react";
+
+export function ButtonDemo()
+{
+    const [msg, setMsg] = useState('');
+
+    function OpenWindow(){
+        window.open("m1.jpeg","Mobile","width=400 height=400");
+    }
+    function handleCut(){
+        setMsg('Removed - Copied to clipboard');
+    }
+    function handleCopy(){
+        setMsg('Copied to Clipboard');
+    }
+    function handlePaste(){
+        setMsg('Inserted from Clipboard');
+    }
+    return(
+        <div className="container-fluid">
+            <h2>Double Click</h2>
+            <img onDoubleClick={OpenWindow} src="m1.jpeg"  width="100" height="100"/>
+             <br /> <br/>
+            <textarea rows="4" cols="40" onCut={handleCut} onCopy={handleCopy} onPaste={handlePaste}>
+
+            </textarea>
+            <p>{msg}</p>
+        </div>
+    )
+}
+
+export default ButtonDemo;
+----------------------------------------------------------------------------------------------------------------------
+example-25
+------------------------
+import { useEffect, useState } from "react";
+
+export function ButtonDemo()
+{
+    const [msg, setMsg] = useState('');
+
+    function Msg1(){
+        setMsg("Hello HSBC Students!");
+    }
+    function Msg2(){
+        setMsg("How are you?");
+    }
+    function Msg3(){
+        setMsg("Welcome to React");
+    }
+    useEffect(()=>{
+        setTimeout(Msg1,3000);
+        setTimeout(Msg2,5000);
+        setTimeout(Msg3,10000);
+    },[]);
+   
+    return(
+        <div className="container-fluid">
+            <h1 className="text-center text-primary">{msg}</h1>
+        </div>
+    )
+}
+export default ButtonDemo;
+--------------------------------------------------------------------------------------------------------------------------
+example-26
+--------------------------
+import { useEffect, useState } from "react";
+
+export function ButtonDemo()
+{
+    const [msg, setMsg] = useState('');
+
+    function ShowTime(){
+        var now = new Date();
+        setMsg(now.toLocaleTimeString());
+    }
+   
+    useEffect(()=>{
+       setInterval(ShowTime, 1000);
+    },[]);
+   
+    return(
+        <div className="container-fluid">
+            <h1 className="text-center text-primary">{msg}</h1>
+        </div>
+    )
+}
+export default ButtonDemo;
+------------------------------------------------------------------------------------------------------
+example-27
+---------------------------
+import { useEffect, useState } from "react";
+
+export function ButtonDemo()
+{
+    const [images, setImages] = useState(["m1.jpeg", "m2.jpeg","m3.jpeg","m4.jpg","m5.jpg"]);
+    const [image, setImage] = useState('');
+
+    var count = 0;
+    function LoadImages(){
+       
+        count++;
+        if(count==images.length) {
+            count = 0;
+        } else {
+            console.log(images[count]);
+            setImage(images[count]);
+        }
+    }
+
+    useEffect(()=>{
+        setInterval(LoadImages,1000);
+    },[]);
+   
+    return(
+        <div className="container-fluid">
+            <h2>Realme Mobile</h2>
+            <img  width="200" height="200" src={image}/>
+        </div>
+    )
+}
+export default ButtonDemo;
+-------------------------------------------------------------------------------------------------------
+example-28(spinner Example)
+------------------------------------------------------------------
+import { useEffect, useState } from "react";
+
+export function ButtonDemo()
+{
+    const [status, setStatus] = useState(1);
+    const [textContainer, setTextContainer] = useState({display:'none'});
+    const [imgContainer, setImgContainer] = useState({display:'none'});
+
+
+    var count = 1;
+    function Loading(){
+        if(count==100){
+            setImgContainer({
+                display:'block'
+            });
+            setTextContainer({
+                display: 'none'
+            })
+        } else {
+            count++;
+            setStatus(count);
+        }
+    }
+
+    function handleLoadClick(){
+        setTextContainer({
+            display: 'block'
+        })
+        setInterval(Loading, 200);
+    }
+
+    useEffect(()=>{
+       
+    },[]);
+   
+    return(
+        <div className="container-fluid">
+           <button className="btn mt-2 btn-primary" onClick={handleLoadClick}>Load Image</button>
+           <div className="d-flex justify-content-center align-items-center" style={{height:'500px'}}>
+                <div className="text-center" style={textContainer}>
+                    <div className="spinner-border"></div>
+                    <p>{status} %</p>
+                    <p>Loading</p>
+                </div>
+                <div style={imgContainer}>
+                    <img src="m1.jpeg" width="300" height="200"/>
+                </div>
+           </div>
+        </div>
+    )
+}
+export default ButtonDemo;
+--------------------------------------------------------------------------------------------------------------------
+example-29
+-------------------------------------------
+import { useEffect, useState } from "react";
+
+export function ButtonDemo()
+{
+    const [status, setStatus] = useState(1);
+    const [textContainer, setTextContainer] = useState({display:'none'});
+    const [imgContainer, setImgContainer] = useState({display:'none'});
+    const [progressValue, setProgressValue] = useState(1);
+
+
+    var count = 1;
+    function Loading(){
+        if(count==100){
+            setImgContainer({
+                display:'block'
+            });
+            setTextContainer({
+                display: 'none'
+            })
+        } else {
+            count++;
+            setProgressValue(count);
+            setStatus(count);
+        }
+    }
+
+    function handleLoadClick(){
+        setTextContainer({
+            display: 'block'
+        })
+        setInterval(Loading, 200);
+    }
+
+    useEffect(()=>{
+       
+    },[]);
+   
+    return(
+        <div className="container-fluid">
+           <button className="btn mt-2 btn-primary" onClick={handleLoadClick}>Load Image</button>
+           <div className="d-flex justify-content-center align-items-center" style={{height:'500px'}}>
+                <div className="text-center" style={textContainer}>
+                    <progress min="1" max="100" value={progressValue}></progress>
+                    <p>{status} %</p>
+                    <p>Loading</p>
+                </div>
+                <div style={imgContainer}>
+                    <img src="m1.jpeg" width="300" height="200"/>
+                </div>
+           </div>
+        </div>
+    )
+}
+export default ButtonDemo;
+---------------------------------------------
+example-30
+--------------------------
+
+React Native
+------------------------------------------------------
+step 1:- npm i -g expo-cli
+
+step 2:- expo init mynative
+select blank
+
+step 3:-ch mynative
+
+step 4:- expo client (install in you mobile from playstore)
+-----------------------------------------------------------------------------------------
+React Native is a JavaScript framework used for developing a real, native mobile application for iOS and Android. 
+It uses only JavaScript to build a mobile application.
+It is like React, which uses native component rather than using web components as building blocks.
+React Native is based on React, JavaScript library of Facebook, and XML-esque markup (JSX) for developing the user interface. It targets the mobile platform rather than the browser.
+
+What are React Native apps?
+React Native apps are not web application. They are running on a mobile device, and it does not load over the browser. It is also not a Hybrid app that builds over Ionic, Phone Gap, etc. that runs over WebView component. React Native apps are the real native app, the JavaScript code stays as JavaScript, and they run in some extra thread by the compiled app. The user interface and everything are compiled to native code.
+------------------------------------------------------------------------------------------------------------------------------------
+History of React Native
+Facebook develops the React Native in 2013 for their internal project Hackathon. 
+Later on, it was released publically in January 2015 as React.js, and in March 2015, Facebook announced that React Native is open and available on GitHub.
+
+React Native was initially developed for the iOS application. However, recently it also supports the Android operating system.
+
+Advantages of React Native
+-----------------------------------------------------------------------------------------------------------------------
+There are several advantages of React Native for building mobile applications. Some of them are given below:
+
+Cross-Platform Usage: Provide facility of "Learn once write everywhere", it works for both platform Android as well iOS devices.
+
+Class Performance: The code written in React Native are compiled into native code, which enables it for both operating systems as well as it functions in the same way on both the platforms.
+
+JavaScript: The JavaScript knowledge is used to build native mobile apps.
+
+Community: The large community of React and React Native around helps us to find any answer we require.
+
+Hot Reloading: Making a few changes in the code of your app will be immediately visible during development. If business logic is changed, its reflection is live reloaded on screen.
+
+Improving with Time: Some features of iOS and Android are still not supported, and the community is always inventing the best practices.
+
+Native Components: We will need to write some platform specific code if we want to create native functionality which is not designed yet.
+
+Existence is Uncertain: As the Facebook develop this framework, its presence is uncertain since it keeps all the rights to kill off the project anytime. As the popularity of React Native rises, it is unlikely to happen.
+------------------------------------------------------------------------------------------------------------------
+example-1
+---------------------------
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Hello Students</Text>
+      <StatusBar style="auto" />
+    </View>
+  );}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+--------------------------------------------------------------------------------------------
+import React, {Component} from 'react': imports the library and other components from react module and assign then to variable React.
+
+const instruction: sets to display the platform-specific message.
+
+export default class App extends Component: defines the classes that extend the React Component. The export default class 
+
+modifier makes the class "public". This block of code defines the components that represent the user interface.
+
+render(): a function that returns a React element.
+
+return(): returns the result of layout and UI components.
+
+View: a container that supports the layout accessibility controls. It is a fundamental component for building the UI.
+
+Text: a React component for displaying text.
+
+style: a property used for styling the components using StyleSheet.
+
+styles: used to design individual components.
+
+{styles.instructions}>{instructions}:
+const styles = StyleSheet.create({}): The StyleSheet class creates the style object that controls the layout and appearance of components. It is similar to Cascading Style Sheets (CSS) used on the Web.
+-------------------------------------------------------------------------------------------------------------------------
 
