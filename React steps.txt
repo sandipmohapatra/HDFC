@@ -59,81 +59,6 @@ Function Components:
 - It provides various built-in hooks.
 
 ------------------------------------------------------------------------------------------------------------------
-FAQ: What are Pure and Impure Components?
-Ans :
-Impure:
-- A component created by using "React.Component" is impure.
-- It will re-render entire content even when there is no change.
-- If a property or state changed then entire component will re-render.
-- It is heavy on application
-- It is slow in access.
-Pure:
-- A component created by using "React.PureComponent" is pure.
-- It will not re-render entire component if there is no change.
-- rendering content will happen only when change occured[state, property]
-- It is faster in access
-- It improves the performance
-- Pure component identifies the changes by using "ChangeDetection" techniques
-InitialValue == FinalValue => No Change Detected
-InitialValue !== FinalValue => Then Change Detected
-- Pure component implicitly verifies initial and final values in a phase called
-"ComponentWillUpdate()"
-"ComponentDidUpdate()"
-- They re-render content only when external state changes.
------------------------------------------------------------------------------------------------------------------
-FAQ: What are pure and impure functions?
-Ans: Impure function can modify the values outside function scope.
-Syntax: Impure Function
-var x = 0;
-function Addition(a, b)
-{
-x = a + b;
-}
-Addition(10, 20)
-console.log(x);
-------------------------------------------------------------------------------------------------
-Syntax: Pure Function
-function Addition(a,b)
-{
-return a + b;
-}
-var x = Addition(10,20);
-Ex:
-import React from "react";
-export class PureDemo extends React.PureComponent
-{
-constructor(){
-super();
-this.state = {
-products: ["TV", "Mobile", "Watch"]
-}
-}
-handleLoadClick(){
-alert("hi");
-this.setState({
-products: ["TV", "Mobile", "Watch", "Shoes"]
-})
-}
-componentDidUpdate(){
-console.log("Component Will Render on Update");
-}
-render(){
-return(
-<div>
-<h2>Pure Component <button 
-onClick={this.handleLoadClick.bind(this)}>Load</button> </h2>
-<ol>
-{
-this.state.products.map((product)=>
-<li key={product}>{product}</li>
-)
-}
-</ol>
-</div>
-)
-}
-}
---------------------------------------------------------------------------------
 example-1
 -----------------------
 app.js
@@ -1589,6 +1514,675 @@ export default ButtonDemo;
 ---------------------------------------------
 example-30
 --------------------------
+import React from "react";
+
+export class App2 extends React.Component
+{
+      constructor(){
+         super();
+         this.state = {
+            title : "Categories List",
+            categories : ["Electronics", "Footwear", "Fashion"]
+         }
+      }
+      render(){
+        return(
+            <React.Fragment>
+               <div className="container-fluid">
+               <h2>{this.state.title}</h2>
+               <ol>
+                  {
+                    this.state.categories.map((category)=>
+                     <li key={category}>{category}</li>
+                    )
+                  }
+               </ol>
+               </div>
+            </React.Fragment>
+        )
+      }
+}
+
+export default App2;
+------------------------------------------------------------------------------------
+example-31
+--------------------------------------------------
+import React from "react";
+
+export class App2 extends React.Component
+{
+      constructor(){
+         super();
+         this.state = {
+            Name : '',
+            Price: 0,
+            City: ''
+         }
+         this.handleNameChange = this.handleNameChange.bind(this);
+         this.handlePriceChange = this.handlePriceChange.bind(this);
+      }
+
+      handleNameChange(e){
+         this.setState({
+            Name: e.target.value,
+            Price: this.state.Price,
+            City: this.state.City
+         })
+      }
+
+      handlePriceChange(e){
+         this.setState({
+            Name: this.state.Name,
+            Price: e.target.value,
+            City: this.state.City
+         })
+      }
+      handleCityChange(e){
+         this.setState({
+            Name: this.state.Name,
+            Price: this.state.Price,
+            City: e.target.value
+         })
+      }
+
+      handleRegisterClick(){
+         alert(JSON.stringify(this.state));
+      }
+
+      render(){
+        return(
+            <React.Fragment>
+               <div className="container-fluid">
+                   <div className="mb-2 mt-2">
+                     <dl>
+                        <dt>Name</dt>
+                        <dd><input type="text" onChange={this.handleNameChange} /></dd>
+                        <dt>Price</dt>
+                        <dd><input type="number" onChange={this.handlePriceChange}/></dd>
+                        <dt>City</dt>
+                        <dd>
+                           <select onChange={this.handleCityChange.bind(this)}>
+                              <option>Delhi</option>
+                              <option>Hyd</option>
+                           </select>
+                        </dd>
+                        <button onClick={this.handleRegisterClick.bind(this)}>Register</button>
+                     </dl>
+                   </div>
+                   <div>
+                     <h2>Details</h2>
+                     <dl>
+                        <dt>Name</dt>
+                        <dd>{this.state.Name}</dd>
+                        <dt>Price</dt>
+                        <dd>{this.state.Price}</dd>
+                        <dt>City</dt>
+                        <dd>{this.state.City}</dd>
+                     </dl>
+                   </div>
+               </div>
+            </React.Fragment>
+        )
+      }
+}
+
+export default App2;
+-------------------------------------------------------------------
+React Request Flow
+React Application Bootstrap Process [Static DOM => Dynamic DOM]
+
+                             Component Life Cycle
+- It defines various phases of component from the time of creating a component and destroying the component.
+- A component is created when user requests the component.
+- A component is destroyed when another component is requested or when you close the appication.
+- Every component have 3 major phases
+
+        a) Mount
+        b) Update
+        c) Unmount
+
+- Mount        
+        componentWillMount()
+        componentDidMount()
+- Update
+        componentWillUpdate()
+- UnMount
+        componentWillUnmount()
+
+Note: The life span of every component is from component request to component destrory, which is trigged when any another component is requested.
+--------------------------------------------------------------------------------------------------------------------------------------
+example-32
+---------------------------
+import React from "react";
+
+export class  LoginComponent extends React.Component
+{
+    componentDidMount(){
+        alert(`Login Component Requested and Will mount`);
+    }
+    componentWillUnmount(){
+        alert(`Login Component will unmount`);
+    }
+    render(){
+        return(
+            <div>
+                <h2>User Login</h2>
+            </div>
+        )
+    }
+}
+
+export class RegisterComponent extends React.Component
+{
+    componentDidMount(){
+        alert(`Register Component Requested and Will mount`);
+    }
+    componentWillUnmount(){
+        alert(`Register Component will unmount`);
+    }
+    render(){
+        return(
+            <div>
+                <h2>Register User</h2>
+            </div>
+        )
+    }
+}
+
+export class App2 extends React.Component
+{
+    constructor(){
+        super();
+        this.state = {
+            View: ''
+        }
+    }
+    handleLoginClick(){
+        this.setState({
+            View: <LoginComponent/>
+        })
+    }
+    handleRegisterClick(){
+        this.setState({
+            View: <RegisterComponent/>
+        })
+    }
+    render(){
+        return(
+            <div className="container-fluid">
+                <h2>Life Cycle Demo</h2>
+                <button onClick={this.handleLoginClick.bind(this)}>Login</button>
+                <button onClick={this.handleRegisterClick.bind(this)}>Register</button>
+                <hr />
+                {this.state.View}
+            </div>
+        )
+    }
+}
+
+export default App2;
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+example-33
+-------------------------
+import React from "react";
+
+export class LoginTemplate extends React.Component
+{
+    constructor(props){
+        super();
+    }
+     render(){
+        return(
+            <div className="container-fluid">
+                <h2>{this.props.title}</h2>
+                <dl>
+                    <dt>{this.props.loginid}</dt>
+                    <dd><input type={this.props.logintype} /></dd>
+                    <dt>Password</dt>
+                    <dd><input type="password"/></dd>
+                </dl>
+                <button>Login</button>
+            </div>
+        )     }}
+
+export class App2 extends React.Component
+{
+    render(){
+        return(
+            <div>
+                <h2>Class Properties</h2>
+                <LoginTemplate title="Admin Login" loginid="Email" logintype="email" />
+            </div>
+        )    }}
+export default App2;
+-------------------------------------------------------------------------------------------------------------
+example-34
+--------------------
+import React from "react";
+
+export class ToolbarTemplate extends React.Component
+{
+     constructor(props){
+        super();
+     }
+     render(){
+         if(this.props.layout==="horizontal"){
+            return(
+                <nav>
+                    <div className="bi bi-facebook mb-3"></div>
+                    <div className="bi bi-twitter mb-3"></div>
+                    <div className="bi bi-linkedin mb-3"></div>
+                    <div className="bi bi-instagram mb-3"></div>
+                </nav>
+            )
+         } else {
+            return(
+                <nav className="d-flex">
+                    <div className="bi bi-facebook me-3"></div>
+                    <div className="bi bi-twitter me-3"></div>
+                    <div className="bi bi-linkedin me-3"></div>
+                    <div className="bi bi-instagram me-3"></div>
+                </nav>
+            )
+         }
+     }
+}
+
+export class App2 extends React.Component
+{
+     constructor(){
+        super();
+        this.state = {
+             viewLayout: ''
+        }
+     }
+     handleLayoutChange(e){
+         this.setState({
+            viewLayout: e.target.value
+         })
+     }
+     render(){
+        return(
+            <div className="container-fluid">
+                <h2>Select a Toolbar Layout</h2>
+                <div className="w-25">
+                    <select onChange={this.handleLayoutChange.bind(this)} className="form-select">
+                        <option value="-1">Select Layout</option>
+                        <option value="horizontal">Horizontal</option>
+                        <option value="vertical">Vertical</option>
+                    </select>
+                </div>
+                <h3>Toolbar</h3>
+                <ToolbarTemplate layout={this.state.viewLayout}/>
+            </div>
+        )
+     }
+}
+
+export default App2;
+-------------------------------------------------------------------------------------------------------------------------------
+example-35
+-----------------------------
+import React from "react";
+
+export class ToolbarTemplate extends React.Component
+{
+     constructor(props){
+        super();
+     }
+     render(){
+         if(this.props.layout==="vertical"){
+            return(
+                <nav>
+                   <div className="btn-group-vertical">
+                        <button className="btn btn-danger mb-2"> <span className="bi bi-facebook"></span> Facebook</button>
+                        <button className="btn btn-danger mb-2"> <span className="bi bi-twitter"></span> Twitter</button>
+                        <button className="btn btn-danger mb-2"> <span className="bi bi-linkedin"></span> Linked In</button>
+                        <button className="btn btn-danger mb-2"> <span className="bi bi-instagram"></span> Instagram</button>
+                   </div>
+                </nav>
+            )
+         } else {
+            return(
+                <nav className="d-flex">
+                    <div className="bi bi-facebook me-3"></div>
+                    <div className="bi bi-twitter me-3"></div>
+                    <div className="bi bi-linkedin me-3"></div>
+                    <div className="bi bi-instagram me-3"></div>
+                </nav>
+            )
+         }
+     }
+}
+
+export class App2 extends React.Component
+{
+     constructor(){
+        super();
+        this.state = {
+             viewLayout: ''
+        }
+     }
+     handleLayoutChange(e){
+         this.setState({
+            viewLayout: e.target.value
+         })
+     }
+     render(){
+        return(
+            <div className="container-fluid">
+                <h2>Select a Toolbar Layout</h2>
+                <div className="w-25">
+                    <select onChange={this.handleLayoutChange.bind(this)} className="form-select">
+                        <option value="-1">Select Layout</option>
+                        <option value="horizontal">Horizontal</option>
+                        <option value="vertical">Vertical</option>
+                    </select>
+                </div>
+                <h3>Toolbar</h3>
+                <ToolbarTemplate layout={this.state.viewLayout}/>
+            </div>
+        )
+     }
+}
+
+export default App2;
+---------------------------------------------------------------------------------------------------------
+example-36
+----------------------
+import { useState } from "react";
+export function FormDemo(){
+
+    const [userDetails, setUserDetails] = useState({"UserName":"", "Age":0, "City":"", "Mobile":""});
+
+
+    function handleNameChange(e){
+        setUserDetails({
+            UserName: e.target.value,
+            Age: userDetails.Age,
+            City: userDetails.City,
+            Mobile: userDetails.Mobile
+        })
+    }
+
+    function handleAgeChange(e){
+        setUserDetails({
+            UserName: userDetails.UserName,
+            Age: e.target.value,
+            City: userDetails.City,
+            Mobile: userDetails.Mobile
+        })
+    }
+
+    function handleCityChange(e){
+        setUserDetails({
+            UserName: userDetails.UserName,
+            Age: userDetails.Age,
+            City: e.target.value,
+            Mobile: userDetails.Mobile
+        })
+    }
+    function handleMobileChange(e){
+        setUserDetails({
+            UserName: userDetails.UserName,
+            Age: userDetails.Age,
+            City: userDetails.City,
+            Mobile: e.target.value
+        })
+    }
+
+
+    function handleFormSubmit(e){
+      e.preventDefault();
+      alert(JSON.stringify(userDetails));
+    }
+    return(
+        <div className="container-fluid">
+            <h2>Register User</h2>
+            <form onSubmit={handleFormSubmit}>
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" onChange={handleNameChange} name="UserName"/></dd>
+                <dt>Age</dt>
+                <dd><input type="number" name="Age" onChange={handleAgeChange}/></dd>
+                <dt>City</dt>
+                <dd>
+                    <select name="City" onChange={handleCityChange}>
+                        <option>Delhi</option>
+                        <option>Hyd</option>
+                    </select>
+                </dd>
+                <dt>Mobile</dt>
+                <dd>
+                    <input type="text" name="Mobile" onChange={handleMobileChange}/>
+                </dd>
+            </dl>
+            <button>Register</button>
+            </form>
+        </div>
+    )
+}
+
+export default FormDemo;
+-------------------------------------------------------------------------------------------------------------------------------
+example-37
+-----------------------
+import { useState } from "react";
+
+
+export function FormDemo(){
+
+    const [userDetails, setUserDetails] = useState({"UserName":"", "Age":0, "City":"", "Mobile":""});
+    const [errors, setErrors] = useState({"UserName":"", "Age":"", "City":"", "Mobile":""});
+
+
+    function handleNameChange(e){
+       if(e.target.value===""){
+          setErrors({
+            UserName: "User Name Required",
+            Age: errors.Age,
+            City: errors.City,
+            Mobile: errors.Mobile
+          })
+       } else {
+            setErrors({
+                UserName: ""
+            })
+            setUserDetails({
+                UserName: e.target.value,
+                Age: userDetails.Age,
+                City: userDetails.City,
+                Mobile: userDetails.Mobile
+            })
+       }
+    }
+
+    function handleAgeChange(e){
+        if(isNaN(e.target.value)){
+            setErrors({
+                Age: "Age must be a number"
+            })
+        } else {
+            setErrors({
+                Age: ""
+            })
+            setUserDetails({
+                UserName: userDetails.UserName,
+                Age: e.target.value,
+                City: userDetails.City,
+                Mobile: userDetails.Mobile
+            })
+        }
+    }
+
+    function handleCityChange(e){
+       if(e.target.value==="-1") {
+          setErrors({
+            City: "Please Select your city"
+          })
+       } else {
+         setErrors({
+            City: ""
+         })
+        setUserDetails({
+            UserName: userDetails.UserName,
+            Age: userDetails.Age,
+            City: e.target.value,
+            Mobile: userDetails.Mobile
+        })
+       }
+    }
+    function handleMobileChange(e){
+         if(e.target.value.match(/\+91\d{10}/)) {
+            setUserDetails({
+                UserName: userDetails.UserName,
+                Age: userDetails.Age,
+                City: userDetails.City,
+                Mobile: e.target.value
+            })
+            setErrors({
+                Mobile: ""
+            })
+         } else {
+            setErrors({
+                Mobile: "Invalid Mobile"
+            })
+         }
+    }
+
+
+    function handleFormSubmit(e){
+      e.preventDefault();
+      alert(JSON.stringify(userDetails));
+    }
+    return(
+        <div className="container-fluid">
+            <h2>Register User</h2>
+            <form onSubmit={handleFormSubmit}>
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" onChange={handleNameChange} name="UserName"/></dd>
+                <dd className="text-danger">{errors.UserName}</dd>
+                <dt>Age</dt>
+                <dd><input type="text" name="Age" onChange={handleAgeChange}/></dd>
+                <dd className="text-danger">{errors.Age}</dd>
+                <dt>City</dt>
+                <dd>
+                    <select name="City" onChange={handleCityChange}>
+                        <option value="-1">Choose City</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Hyd">Hyd</option>
+                    </select>
+                </dd>
+                <dd className="text-danger">{errors.City}</dd>
+                <dt>Mobile</dt>
+                <dd>
+                    <input type="text" name="Mobile" onChange={handleMobileChange}/>
+                </dd>
+                <dd className="text-danger">{errors.Mobile}</dd>
+            </dl>
+            <button>Register</button>
+            </form>
+        </div>
+    )
+}
+export default FormDemo;
+------------------------------------------------------------------------------------------------------
+> npm  install  formik  --save   
+----------------------------------------------------------------------
+ 3rd Party Form Library for React
+- Formik
+- Kendo [Telerik]
+- DevExpress etc..
+--------------------------------------------------------------------
+example-38
+-----------------------
+import { useFormik } from "formik";
+
+export function FormikDemo()
+{
+
+    function UserVaidation(formBody)
+    {
+        var errors = {};
+
+        if(formBody.UserName==""){
+            errors.UserName="User Name Required";
+        } else if(formBody.UserName.length<4) {
+            errors.UserName="User Name too short min 4 chars required";
+        } else {
+            errors.UserName="";
+        }
+
+        if(isNaN(formBody.Age)){
+            errors.Age = "Age must be a number";
+        } else {
+            errors.Age ="";
+        }
+
+        if(formBody.City=="-1"){
+            errors.City = "Please Select your City";
+        } else {
+            errors.City = "";
+        }
+
+        if(formBody.Mobile.match(/\+91\d{10}/)) {
+            errors.Mobile = "";
+        } else {
+            errors.Mobile = "Invalid Mobile"
+        }
+
+        return errors;
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            "UserName": "",
+            "Age": 0,
+            "City":"",
+            "Mobile":""
+        },
+        validate: UserVaidation,
+        onSubmit: (values) => {
+            alert(JSON.stringify(values));
+        }
+    })
+    return(
+        <div className="container-fluid">
+           <form onSubmit={formik.handleSubmit}>
+           <h2>Register - Formik Form</h2>
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" onBlur={formik.handleBlur} onChange={formik.handleChange} name="UserName"/></dd>
+                <dd className="text-danger">{formik.errors.UserName}</dd>
+                <dt>Age</dt>
+                <dd><input type="text" onChange={formik.handleChange} name="Age" /></dd>
+                <dd className="text-danger">{formik.errors.Age}</dd>
+                <dt>City</dt>
+                <dd>
+                    <select onChange={formik.handleChange} name="City">
+                        <option value="-1">Choose City</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Hyd">Hyd</option>
+                    </select>
+                </dd>
+                <dd className="text-danger">{formik.errors.City}</dd>
+                <dt>Mobile</dt>
+                <dd>
+                    <input type="text" onChange={formik.handleChange} name="Mobile" />
+                </dd>
+                <dd className="text-danger">{formik.errors.Mobile}</dd>
+            </dl>
+            <button>Register</button>
+           </form>
+        </div>
+    )
+}
+
+export default FormikDemo
+--------------------------------------------------------------------------------------------------------
+example-39
+------------------------------
 
 React Native
 ------------------------------------------------------
@@ -1679,4 +2273,29 @@ styles: used to design individual components.
 {styles.instructions}>{instructions}:
 const styles = StyleSheet.create({}): The StyleSheet class creates the style object that controls the layout and appearance of components. It is similar to Cascading Style Sheets (CSS) used on the Web.
 -------------------------------------------------------------------------------------------------------------------------
+React Native State
+There are two types of data state and props in React Native which control the component. The component that uses the state is mutable. They can be changed later on if required. The props component is immutable, and it is fixed throughout the lifetime.
 
+The state is generally initialized in constructor and then call setState when we want to change it.
+
+In this example, we create a Text component with state data. The content of Text component will be updated by clicking on it. The event onPress call the setState, and it updates the state "myState" text.
+
+React Native state Example 2
+-----------------------------------------------------------
+ import React, {Component} from 'react';  
+import { Text, View } from 'react-native';  
+  
+export default class App extends Component {  
+    state = {  
+        myState: 'This is a text component, created using state data. It will change or updated on clicking it.'  
+    }  
+    updateState = () => this.setState({myState: 'The state is updated'})  
+    render() {  
+        return (  
+            <View>  
+                <Text onPress={this.updateState}> {this.state.myState} </Text>  
+            </View>  
+        );  
+    }  
+}  
+-----------------------------------------------------------------------------------------------------------------
