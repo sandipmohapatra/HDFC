@@ -599,6 +599,8 @@ export default class PostList extends React.Component {
 --------------------------------------------------------------------------------------------
 >npm install react-router-dom --save
 >npm install react-router-dom@v5 --save
+>npm i --save-dev @types/react-router-dom
+>npm install react-router-dom@6.0.0-beta.0
 --------------------------------------------------------------------------------------------------------------------------------------------
 Example-13
 -----------------------
@@ -2299,3 +2301,618 @@ export default class App extends Component {
     }  
 }  
 -----------------------------------------------------------------------------------------------------------------
+Example-3
+--------------------
+import React, { Component } from 'react';  
+import {StyleSheet,Text,View,TextInput,TouchableOpacity} from 'react-native';  
+  
+export default class App extends Component {  
+    state: {  
+        password: string,  
+        isPasswordVisible: boolean,  
+        toggleText: string,  
+    }  
+    constructor(props: Props) {  
+        super(props);  
+        this.state = {  
+            password: '',  
+            isPasswordVisible: true,  
+            toggleText: 'Show',  
+        };  
+    }  
+    handleToggle = () => {  
+        const { isPasswordVisible } = this.state;  
+        if (isPasswordVisible) {  
+            this.setState({ isPasswordVisible: false });  
+            this.setState({ toggleText: 'Hide' });  
+        } else {  
+            this.setState({ isPasswordVisible: true });  
+            this.setState({ toggleText: 'Show' });  
+        }  
+    };  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <TextInput  
+                    secureTextEntry={this.state.isPasswordVisible}  
+                    style={{ width: 400, height: 50, backgroundColor: '#a7a6a9', color: 'white', fontSize: 20 }}  
+                />  
+                <TouchableOpacity onPress={this.handleToggle}>  
+                    <Text  style={{fontSize: 20}}>{this.state.toggleText}</Text>  
+                </TouchableOpacity>  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    container: {  
+        flex: 1,  
+        justifyContent: 'center',  
+        alignItems: 'center',  
+    }  
+});  
+-----------------------------------------------------------------------------------------------------------------------------------------
+Example-4
+---------------------------
+ import React, { Component } from 'react';  
+import {  
+  Platform,  
+  StyleSheet,  
+  Image,  
+  Text,  
+  View  
+} from 'react-native';  
+  
+  
+export default class App extends Component<{}> {  
+  render() {  
+    let imagePath = { uri: 'https://facebook.github.io/react-native/img/header_logo.png'};  
+    return (  
+        <View style={styles.container}>  
+          <Text style={styles.welcome}>Welcome to React Native!</Text>  
+          <Image source={imagePath} style={{width: 250, height: 250}} />  
+        </View>  
+    );  
+  }  
+}  
+  
+const styles = StyleSheet.create({  
+  container: {  
+    flex: 1,  
+    justifyContent: 'center',  
+    alignItems: 'center',  
+    backgroundColor: '#a7a6a9',  
+  },  
+  welcome: {  
+    fontSize: 30,  
+    textAlign: 'center',  
+    margin: 20,  
+  }  
+});  
+--------------------------------------------------------------------------------------------
+Example-5
+----------------------
+import React, { Component } from 'react';  
+import { StyleSheet, Text, View } from 'react-native';  
+  
+class ChildClass extends Component {  
+  render() {  
+    return (  
+        <View style={{alignItems: 'center'}}>  
+          <Text style={styles.welcome}>Hello {this.props.name}!</Text>  
+        </View>  
+    );  
+  }  
+}  
+  
+export default class ParentsClass extends Component {  
+  render() {  
+    return (  
+        <View style={{alignItems: 'center'}}>  
+          <ChildClass name='Ashu' />  
+          <ChildClass name='Aman' />  
+          <ChildClass name='Max' />  
+        </View>  
+    );  
+  }  
+}  
+const styles = StyleSheet.create({  
+   welcome: {  
+    fontSize: 30,  
+  }  
+});  
+  
+--------------------------------------------------------------------------------------------------------------------------
+Example-6
+--------------------------
+import React, { Component } from 'react';  
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';  
+  
+export default class ImplementingStyle extends Component {  
+    render() {  
+        return (  
+            <View>  
+                <Text style={{ backgroundColor: '#a7a6a9', color: 'yellow', fontSize: 20 }}>this is inline style</Text>  
+                <Text style={styles.green}>just green</Text>  
+                <Text style={styles.biggray}>just biggray</Text>  
+                <Text style={[styles.biggray, styles.green]}>biggray, then green</Text>  
+                <Text style={[styles.green, styles.biggray]}>green, then biggray</Text>  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    biggray: {  
+        color: 'gray',  
+        fontWeight: 'bold',  
+        fontSize: 30,  
+    },  
+    green: {  
+        color: 'green',  
+    },  
+});  
+-------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+Example-7
+---------------------
+import React, { Component } from 'react';  
+import { StyleSheet, View } from 'react-native';  
+  
+export default class HeightWidth extends Component {  
+    render() {  
+        return (  
+            <View>  
+                <View style={styles.powderblue} />  
+                <View style={styles.skyblue} />  
+                <View style={styles.steelblue} />  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    powderblue:{  
+        width: 100, height: 100, backgroundColor: 'powderblue'  
+    },  
+    skyblue:{  
+        width: 200, height: 200, backgroundColor: 'skyblue'  
+    },  
+    steelblue:{  
+        height: 300, backgroundColor: 'steelblue'  
+    },  
+})  
+----------------------------------------------------------------------------
+Example-9
+-----------------
+ import React, { Component } from 'react';  
+import { StyleSheet, View } from 'react-native';  
+  
+export default class HeightWidth extends Component {  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <View style={styles.powderblue} />  
+                <View style={styles.skyblue} />  
+                <View style={styles.steelblue} />  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    container:{  
+      flex:1  
+    },  
+    powderblue:{  
+        flex:1,  
+        backgroundColor: 'powderblue',  
+    },  
+    skyblue:{  
+        flex:2,  
+        backgroundColor: 'skyblue',  
+    },  
+    steelblue:{  
+        flex:3,  
+        backgroundColor: 'steelblue',  
+    },  
+})  
+---------------------------------------------------------------------------------------------------------
+Example-10
+--------------------------
+import React, { Component } from 'react';  
+import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';  
+  
+export default class ButtonBasics extends Component {  
+    onPressButton() {  
+        Alert.alert('You clicked the button!')  
+    }  
+  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <View style={styles.buttonContainer}>  
+                    <Button  
+                        onPress={this.onPressButton}  
+                        title="Press Me"  
+                    />  
+                </View>  
+                <View style={styles.buttonContainer}>  
+                    <Button  
+                        onPress={this.onPressButton}  
+                        title="Press Me"  
+                        color="#009933"  
+                    />  
+                </View>  
+                <View style={styles.multiButtonContainer}>  
+                    <Button  
+                        onPress={this.onPressButton}  
+                        title="A disabled button"  
+                        disabled={true}  
+                    />  
+                    <Button  
+                        onPress={this.onPressButton}  
+                        title="OK!"  
+                        color="#009933"  
+                    />  
+                </View>  
+            </View>  
+        );  
+    }  
+}  
+  
+const styles = StyleSheet.create({  
+    container: {  
+        flex: 1,  
+        justifyContent: 'center',  
+    },  
+    buttonContainer: {  
+        margin: 20  
+    },  
+    multiButtonContainer: {  
+        margin: 20,  
+        flexDirection: 'row',  
+        justifyContent: 'space-between'  
+    }  
+})  
+-------------------------------------------------------------------------------
+Example-11
+---------------------
+import React, { Component } from 'react';  
+import { StyleSheet,View } from 'react-native';  
+  
+export default class FlexDirectionBasics extends Component {  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <View style={styles.powderblue} />  
+                <View style={styles.skyblue} />  
+                <View style={styles.steelblue} />  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    container:{  
+        flex: 1,  
+        flexDirection: 'row',// set elements horizontally, try column.  
+    },  
+    powderblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'powderblue',  
+    },  
+    skyblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'skyblue',  
+    },  
+    steelblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'steelblue',  
+    }  
+})  
+-------------------------------------------------------------------------------------------------------
+Example-12
+----------------------
+import React, { Component } from 'react';  
+import { StyleSheet,View } from 'react-native';  
+  
+export default class JustifyContentBasics extends Component {  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <View style={styles.powderblue} />  
+                <View style={styles.skyblue} />  
+                <View style={styles.steelblue} />  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    container:{  
+        flex: 1,  
+        flexDirection: 'column', // set elements horizontally`.  
+        justifyContent: 'center',  
+  
+    },  
+    powderblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'powderblue'  
+    },  
+    skyblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'skyblue',  
+    },  
+    steelblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'steelblue',  
+    }  
+})  
+------------------------------------------------------------------------
+Example-13
+--------------------------
+import React, { Component } from 'react';  
+import { StyleSheet,View } from 'react-native';  
+  
+export default class AlignItemsBasics extends Component {  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <View style={styles.powderblue} />  
+                <View style={styles.skyblue} />  
+                <View style={styles.steelblue} />  
+            </View>  
+        );  
+    }  
+}  
+const styles = StyleSheet.create({  
+    container:{  
+        flex: 1,  
+        flexDirection: 'column', // set elements horizontally`.  
+        justifyContent: 'center',  
+        alignItems: 'stretch',  
+    },  
+    powderblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'powderblue'  
+    },  
+    skyblue:{  
+        width: 60,  
+        height: 60,  
+        backgroundColor: 'skyblue',  
+    },  
+    steelblue:{  
+        /*width: 60,*/  
+        height: 60,  
+        backgroundColor: 'steelblue',  
+    }  
+})  
+-----------------------------------------------------------------------------------------------
+Example-14
+------------------------
+import React, { Component } from "react";  
+import { StyleSheet, TextInput, View , Button } from "react-native";  
+  
+export default class App extends Component {  
+    state = {  
+        placeName: "",  
+        places: []  
+    };  
+  
+    placeNameChangedHandler = val => {  
+        this.setState({  
+            placeName: val  
+        });  
+    };  
+  
+    placeSubmitHandler = () => {  
+        alert("button clicked")  
+    };  
+  
+    render() {  
+        return (  
+            <View style={styles.container}>  
+                <TextInput  
+                        placeholder="An awesome place"  
+                        onChangeText={this.placeNameChangedHandler}  
+                        style={styles.placeInput}  
+                />  
+                <Button  
+                        title="Button"  
+                        onPress={this.placeSubmitHandler}  
+                />  
+            </View>  
+        );  
+    }  
+}  
+  
+const styles = StyleSheet.create({  
+    container: {  
+        flex: 1,  
+        padding: 26,  
+        backgroundColor: "#fff",  
+        justifyContent: "flex-start"  
+    }  
+});  
+--------------------------------------------------------------------------------------
+Example-15
+-------------------------
+import React, {Component} from 'react';  
+import {Platform, StyleSheet, Text, View, Animated} from 'react-native';  
+  
+export default class App extends Component {  
+    state={  
+        progressStatus: 0,  
+    }  
+    anim = new Animated.Value(0);  
+    componentDidMount(){  
+        this.onAnimate();  
+    }  
+    onAnimate = () =>{  
+        this.anim.addListener(({value})=> {  
+            this.setState({progressStatus: parseInt(value,10)});  
+        });  
+        Animated.timing(this.anim,{  
+             toValue: 100,  
+             duration: 50000,  
+        }).start();  
+    }  
+  render() {  
+    return (  
+      <View style={styles.container}>  
+            <Animated.View  
+                style={[  
+                    styles.inner,{width: this.state.progressStatus +"%"},  
+                ]}  
+            />  
+            <Animated.Text style={styles.label}>  
+                    {this.state.progressStatus }%  
+            </Animated.Text>  
+      </View>  
+    );  
+  }  
+}  
+const styles = StyleSheet.create({  
+    container: {  
+    width: "100%",  
+    height: 40,  
+    padding: 3,  
+    borderColor: "#FAA",  
+    borderWidth: 3,  
+    borderRadius: 30,  
+    marginTop: 200,  
+    justifyContent: "center",  
+  },  
+  inner:{  
+    width: "100%",  
+    height: 30,  
+    borderRadius: 15,  
+    backgroundColor:"green",  
+  },  
+  label:{  
+    fontSize:23,  
+    color: "black",  
+    position: "absolute",  
+    zIndex: 1,  
+    alignSelf: "center",  
+  }  
+});  
+----------------------------------------------------------------------------------------
+Example-16
+----------------------
+import React, { Component } from 'react';  
+import { Platform, StyleSheet, View, Text, TouchableOpacity, ProgressBarAndroid, ProgressViewIOS } from 'react-native';  
+export default class MyApp extends Component<{}>{  
+  constructor()  {  
+    super();  
+    this.state = {  
+      progressStatus: 0,  
+    }  
+  }  
+  
+  start_Progress = () => {  
+    this.value = setInterval( () => {  
+      if(this.state.progressStatus <= 1){  
+        this.setState({progressStatus: this.state.progressStatus+ .01})  
+      }  
+    }, 100 );  
+  }  
+  
+  stop_Progress = () =>{  
+   clearInterval(this.value);  
+  }  
+  
+  clear_Progress =()=>{  
+    this.setState({progressStatus : 0.0})  
+  }  
+  
+  render()  
+  {  
+    return(  
+      <View style = { styles.MainContainer }>  
+        <Text style = {{fontSize: 20, color: '#000'}}> Progress Value: { parseFloat((this.state.progressStatus * 100).toFixed(3))} %</Text>{  
+            ( Platform.OS === 'android' )  
+            ?  
+              ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.progressStatus } indeterminate = { false } /> )  
+            :  
+              ( <ProgressViewIOS progress = { this.state.progressStatus } /> )  
+        }  
+        <TouchableOpacity activeOpacity = { 1 } style = { styles.button } onPress = { this.start_Progress }>  
+          <Text style = { styles.TextStyle }> Start Progress </Text>  
+        </TouchableOpacity>  
+        <TouchableOpacity activeOpacity = { 1 } style = { styles.button } onPress = { this.stop_Progress }>  
+          <Text style = { styles.TextStyle }> Stop Progress </Text>  
+        </TouchableOpacity>  
+        <TouchableOpacity activeOpacity = { 1 } style = { styles.button } onPress = { this.clear_Progress }>  
+          <Text style = { styles.TextStyle }> Reset Progress </Text>  
+        </TouchableOpacity>  
+      </View>  
+    );  
+  }  
+}  
+  
+const styles = StyleSheet.create(  
+{  
+  MainContainer:  
+  {  
+    flex: 1,  
+    justifyContent: 'center',  
+    paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0,  
+    margin: 20  
+  },  
+  
+  button: {  
+  width: '100%',  
+  backgroundColor: '#00BCD4',  
+  borderRadius:5,  
+  padding: 10,  
+  marginTop: 10,  
+  
+},  
+  
+TextStyle:{  
+    color:'#fff',  
+    textAlign:'center',  
+    fontWeight: 'bold',  
+}  
+});  
+-----------------------------------------------------------------------------------------
+index.js (React+springboot)
+---------------------------------------------------------------
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom'
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import App41 from './App4'; 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+  <App41/>
+  </BrowserRouter>
+);
+
+reportWebVitals();
+
+---------------------------------------------------------------------------------
+index.js(Shopping cart)
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom'
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ShoppingIndex from './shopping-spa/shopping-index';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <ShoppingIndex />
+  </React.StrictMode>
+);
+reportWebVitals();
+-------------------------------------------------------------------------------------------------------------
