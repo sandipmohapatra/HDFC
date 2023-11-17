@@ -7,3 +7,15 @@ ReactJs+SpringBoot
 https://www.javaguides.net/2023/06/react-form-handling-input-select-check.html
 https://www.javaguides.net/2023/05/react-crud-application-with-spring-boot.html
 -------------------------------------------------------------------------------------------------------------------------
+Spring Security
+https://www.youtube.com/watch?v=XTyQIrlyWfQ
+https://www.youtube.com/watch?v=7wA46kRh2u8
+https://www.youtube.com/watch?v=oLlSs-p6OEs
+https://www.youtube.com/watch?v=cnrJ-Nnvoik
+https://www.youtube.com/watch?v=rgG2_T-OB8g
+
+JWT Security
+https://www.youtube.com/watch?v=feETfZbvu-k
+https://www.youtube.com/watch?v=Hzkw846jIOU
+https://www.youtube.com/watch?v=bJAsHOH4lMk
+---------------------------------------------------------------------------------------------
