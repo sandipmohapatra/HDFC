@@ -19,3 +19,17 @@ https://www.youtube.com/watch?v=feETfZbvu-k
 https://www.youtube.com/watch?v=Hzkw846jIOU
 https://www.youtube.com/watch?v=bJAsHOH4lMk
 ---------------------------------------------------------------------------------------------
+React + SpringBoot
+---------------------------------------
+https://www.javaguides.net/2023/06/react-form-handling-input-select-check.html
+https://www.javaguides.net/2023/05/react-crud-application-with-spring-boot.html
+https://www.youtube.com/playlist?list=PLGRDMO4rOGcNLnW1L2vgsExTBg-VPoZHr
+---------------------------
+aws
+-----------------------------------------------------------------------
+https://www.youtube.com/watch?v=mlsOdW6dbvI&t=286s
+https://www.youtube.com/watch?v=GSu1g9jvFhY
+https://www.youtube.com/watch?v=D1yOALZcMHs
+--------------------------------------------------------------------------------------------------------
+login page
+https://clerk.com/blog/building-a-react-login-page-template
